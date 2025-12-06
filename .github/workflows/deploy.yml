@@ -1,0 +1,24 @@
+name: Deploy to DreamHost
+
+on:
+  push:
+    branches: [ main ]   # if your branch is 'master', change this
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Deploy via SSH and git pull
+        uses: appleboy/ssh-action@v1.0.0
+        with:
+          host: ${{ secrets.DH_HOST }}
+          username: ${{ secrets.DH_USER }}
+          key: ${{ secrets.DH_SSH_KEY }}
+          script: |
+            cd /home/dh_4g23em/zubr.us
+            git pull
+
