@@ -1,4 +1,4 @@
-// Zubr Website JavaScript
+// Zubr Technologies Website JavaScript
 // Mobile navigation toggle and smooth scrolling
 
 document.addEventListener('DOMContentLoaded', function() {
