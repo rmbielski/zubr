@@ -17,8 +17,7 @@ jobs:
         with:
           host: ${{ secrets.DH_HOST }}
           username: ${{ secrets.DH_USER }}
-          key: ${{ secrets.DH_SSH_KEY }}
+          password: ${{ secrets.DH_PASSWORD }}
           script: |
             cd /home/dh_4g23em/zubr.us
             git pull
-
