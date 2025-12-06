@@ -98,3 +98,5 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+// Maintenance update marker
