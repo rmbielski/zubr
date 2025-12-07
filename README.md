@@ -62,7 +62,7 @@ This site is designed to be deployed via GitHub Pages:
 ├── faq.html                # FAQ page
 ├── contact.html            # Contact page
 ├── word_logo_trans.png           # Wordmark logo (add your own)
-├── image_logo_trans.png          # Icon logo (add your own)
+├── image_logo_trans2.png          # Icon logo (add your own)
 ├── technical-brief.pdf     # Technical brief (add your own)
 ├── README.md               # This file
 └── assets/
@@ -76,7 +76,7 @@ This site is designed to be deployed via GitHub Pages:
 ## Customization
 
 ### Logo
-Replace `word_logo_trans.png` (wordmark) and `image_logo_trans.png` (icon) in the root directory with your company logos. They are used:
+Replace `word_logo_trans.png` (wordmark) and `image_logo_trans2.png` (icon) in the root directory with your company logos. They are used:
 - In the navigation header (top-left)
 - As the favicon (icon)
 
