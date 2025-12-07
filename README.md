@@ -61,7 +61,8 @@ This site is designed to be deployed via GitHub Pages:
 ├── resources.html          # Resources page
 ├── faq.html                # FAQ page
 ├── contact.html            # Contact page
-├── logo.png                # Company logo (add your own)
+├── word_logo.png           # Wordmark logo (add your own)
+├── image_logo.png          # Icon logo (add your own)
 ├── technical-brief.pdf     # Technical brief (add your own)
 ├── README.md               # This file
 └── assets/
@@ -75,9 +76,9 @@ This site is designed to be deployed via GitHub Pages:
 ## Customization
 
 ### Logo
-Replace `logo.png` in the root directory with your company logo. The logo is used:
+Replace `word_logo.png` (wordmark) and `image_logo.png` (icon) in the root directory with your company logos. They are used:
 - In the navigation header (top-left)
-- As the favicon
+- As the favicon (icon)
 
 ### Technical Brief
 Add your technical brief PDF as `technical-brief.pdf` in the root directory.
