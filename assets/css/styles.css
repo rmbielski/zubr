@@ -144,10 +144,20 @@ img {
 .logo {
     display: flex;
     align-items: center;
+    gap: var(--spacing-sm);
 }
 
-.logo img {
-    height: 45px;
+.logo-thumb {
+    height: 36px;
+    width: 36px;
+    border-radius: 12px;
+    object-fit: cover;
+    box-shadow: 0 0 10px rgba(255, 94, 223, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+}
+
+.logo-wordmark {
+    height: 42px;
     width: auto;
     filter: drop-shadow(0 0 12px rgba(255, 94, 223, 0.35));
 }
@@ -272,6 +282,10 @@ main {
     grid-template-columns: 1fr;
     gap: var(--spacing-xl);
     align-items: center;
+}
+
+.hero-visual {
+    display: none;
 }
 
 .hero-copy h1 {
@@ -923,7 +937,7 @@ main {
     
     .hero-buttons { flex-direction: row; align-items: center; }
     
-    .hero-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .hero-grid { grid-template-columns: 1fr; }
     
     .benefits-grid {
         grid-template-columns: repeat(3, 1fr);
