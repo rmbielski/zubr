@@ -150,11 +150,14 @@ img {
 .logo-thumb {
     height: 36px;
     width: 36px;
-    border-radius: 12px;
-    object-fit: cover;
-    box-shadow: none;
-    border: none;
-    background: transparent;
+    border-radius: 50%;
+    object-fit: contain;
+    box-shadow: none !important;
+    border: none !important;
+    background: transparent !important;
+    filter: none !important;
+    padding: 0;
+    margin: 0;
 }
 
 .logo-wordmark {
