@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Zubr Technologies technology: Scatter correction, moisture handling, denoising, and sub-pixel detection anchored to lab truth.">
+    <meta name="description" content="Zubr Technologies technology: spectroscopy solutions with prototype Ventenata calibration and customer-requested plant targets.">
     <title>Technology - Zubr Technologies</title>
     <link rel="stylesheet" href="assets/css/styles.css?v=003">
     <link rel="icon" type="image/png" href="image_logo_trans2.png">
 </head>
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
-    
+
     <!-- Header -->
     <header class="header">
         <div class="container">
@@ -47,124 +47,136 @@
                 <div class="hero-grid">
                     <div class="hero-copy">
                         <div class="eyebrow">Technology</div>
-                        <h1>Built to beat noise in the real world.</h1>
-                        <p class="subhead">Scatter correction, moisture orthogonalization, denoising, and sub-pixel detection—anchored to lab truth.</p>
+                        <h1>Spectroscopy solutions built around calibration.</h1>
+                        <p class="subhead">Our platform starts with a Ventenata prototype and expands to customer-requested plant targets for mixed media or direct plant confirmation.</p>
                         <div class="hero-buttons">
-                            <a href="products.html" class="btn btn-primary">See it in the products</a>
-                            <a href="resources.html" class="btn btn-secondary">Read the brief</a>
+                            <a href="products.html" class="btn btn-primary">See the solutions</a>
+                            <a href="resources.html" class="btn btn-secondary">Review resources</a>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Preprocessing Section -->
+        <!-- Challenge Section -->
         <section class="section">
             <div class="container">
                 <div class="section-title">
-                    <h2>Preprocessing</h2>
-                    <p>Robust signal preparation for reliable detection in field conditions.</p>
+                    <h2>Why detection is hard</h2>
+                    <p>Plant targets vary by medium, moisture, and region.</p>
                 </div>
                 <div class="cards-grid">
                     <div class="card">
-                        <h3>Scatter Correction</h3>
-                        <p>Real-world spectra are affected by physical scattering from particle size, surface texture, and sample geometry. Our preprocessing pipeline addresses these challenges:</p>
-                        <ul>
-                            <li><strong>SNV (Standard Normal Variate)</strong> — Removes baseline shift and path-length variation</li>
-                            <li><strong>MSC (Multiplicative Scatter Correction)</strong> — Corrects multiplicative scatter effects</li>
-                            <li><strong>EMSC (Extended MSC)</strong> — Advanced correction separating scatter from chemical absorbance</li>
-                        </ul>
+                        <h3>Subtle signatures</h3>
+                        <p>Spectral signals are faint when plants are mixed with other material or environmental noise.</p>
                     </div>
                     <div class="card">
-                        <h3>Moisture Handling</h3>
-                        <p>Water bands dominate NIR spectra in undried hay and green pasture. We use orthogonalization methods to remove moisture interference while preserving target signals:</p>
-                        <ul>
-                            <li><strong>OSC (Orthogonal Signal Correction)</strong> — Removes variance uncorrelated with targets</li>
-                            <li><strong>ROSC (Robust OSC)</strong> — Enhanced stability across moisture ranges</li>
-                            <li>Calibration sets spanning real-world moisture levels ensure robust performance</li>
-                        </ul>
+                        <h3>Field variability</h3>
+                        <p>Different growth stages and moisture levels can shift spectra in unpredictable ways.</p>
+                    </div>
+                    <div class="card">
+                        <h3>Slow confirmation</h3>
+                        <p>Lab methods like DNA testing can be accurate but are not practical for real-time decisions.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Denoising Section -->
+        <!-- Solution Approach -->
         <section class="section section-light">
             <div class="container">
                 <div class="section-title">
-                    <h2>Denoising & Features</h2>
-                    <p>Extracting meaningful signal from noisy field data.</p>
+                    <h2>Our solution approach</h2>
+                    <p>Targeted calibration with repeatable field workflows.</p>
                 </div>
                 <div class="cards-grid">
                     <div class="card">
-                        <h3>Hyperspectral Cube Processing</h3>
-                        <p>For drone-collected imagery, we apply dimensionality reduction that separates signal from noise:</p>
+                        <h3>Controlled capture</h3>
                         <ul>
-                            <li><strong>MNF (Minimum Noise Fraction)</strong> — Standard noise-ordered transform</li>
-                            <li><strong>OKMNF</strong> — Optimized kernel variant for improved separation</li>
-                            <li>Preserves subtle spectral features while removing sensor and atmospheric noise</li>
+                            <li>Close-range geometry and internal illumination</li>
+                            <li>Smartphone-based workflow for rapid results</li>
+                            <li>Designed for mixed media and direct plant scans</li>
                         </ul>
                     </div>
                     <div class="card">
-                        <h3>Spectral Denoising</h3>
-                        <p>For point spectra from handheld analyzers:</p>
+                        <h3>Customer-requested targets</h3>
                         <ul>
-                            <li><strong>Wavelet denoising</strong> — Multi-scale noise removal preserving sharp spectral features</li>
-                            <li>Adaptive thresholding based on noise characteristics</li>
-                            <li>Preserves diagnostic absorption bands</li>
-                        </ul>
-                    </div>
-                    <div class="card">
-                        <h3>Spectral-Spatial Fusion</h3>
-                        <p>Combining spectral signatures with spatial context improves detection in heterogeneous scenes:</p>
-                        <ul>
-                            <li><strong>GLCM texture</strong> — Gray-level co-occurrence matrices capture patch structure</li>
-                            <li>Spatial context helps distinguish isolated plants from patches</li>
-                            <li>Improves accuracy in mixed vegetation scenarios</li>
+                            <li>Ventenata is the prototype calibration</li>
+                            <li>Plan to calibrate for any customer-requested plant</li>
+                            <li>Field validation tied to real-world samples</li>
                         </ul>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Detection Section -->
+        <!-- R&D Plan Section -->
         <section class="section">
             <div class="container">
                 <div class="section-title">
-                    <h2>Detection & Calibration</h2>
-                    <p>Lab-grounded models tuned for real-world performance.</p>
+                    <h2>Prototype plan</h2>
+                    <p>Phase I focuses on the Ventenata use case as proof of the calibration platform.</p>
+                </div>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Build the labeled dataset</h3>
+                            <p>Collect spectra from mixed media and direct plant samples, with metadata for variability.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>Train and validate</h3>
+                            <p>Quantify performance and document failure modes in field conditions.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>Deploy prototype solutions</h3>
+                            <p>Ship handheld units to pilot partners and collect feedback.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Targets Section -->
+        <section class="section section-light">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Prototype targets (Ventenata)</h2>
+                    <p>Clear performance thresholds for Phase I decisions.</p>
                 </div>
                 <div class="cards-grid">
                     <div class="card">
-                        <h3>Sub-Pixel Detectors</h3>
-                        <p>Finding targets that don't fill an entire pixel is the key challenge for early detection. Our detection algorithms are designed for this scenario:</p>
+                        <h3>Targets</h3>
                         <ul>
-                            <li><strong>CEM (Constrained Energy Minimization)</strong> — Optimal filter for known target spectra</li>
-                            <li><strong>ACE (Adaptive Coherence Estimator)</strong> — Background-adaptive detection</li>
-                            <li><strong>Matched Filter</strong> — Classic approach with scene adaptation</li>
-                            <li>All methods tuned with clean lab spectra and adapted to each scene</li>
+                            <li>At least 95% sensitivity and 90% specificity on held-out samples</li>
+                            <li>Stable performance across mixed media and moisture ranges</li>
+                            <li>Documented failure modes and mitigation steps</li>
                         </ul>
                     </div>
                     <div class="card">
-                        <h3>Calibration Approach</h3>
-                        <p>Robust detection requires rigorous calibration with known samples:</p>
+                        <h3>Why it matters</h3>
                         <ul>
-                            <li><strong>Spiked sample sets</strong> — Known "blades/kg" concentrations across moisture levels</li>
-                            <li><strong>Lab reference spectra</strong> — Pure target spectra under controlled conditions</li>
-                            <li><strong>Field validation</strong> — Ground-truth verification in real conditions</li>
-                            <li>Focus on low-cover, mixed-pixel signals (e.g., single blades in bales)</li>
+                            <li>Validates the calibration platform for new targets</li>
+                            <li>Proves faster-than-DNA confirmation in the field</li>
+                            <li>De-risks future customer-requested calibrations</li>
                         </ul>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Technical Brief CTA -->
-        <section class="section section-light">
+        <!-- CTA -->
+        <section class="section">
             <div class="container text-center">
-                <h2>Want the full technical details?</h2>
-                <p>Download our technical brief for a deeper dive into methods, validation results, and citations.</p>
-                <a href="technical-brief.pdf" class="btn btn-accent" style="margin-top: 1rem;">Download the technical brief (PDF)</a>
+                <h2>Need a custom calibration solution?</h2>
+                <p>Tell us your target species and sampling context.</p>
+                <a href="contact.html" class="btn btn-accent" style="margin-top: 1rem;">Request a consultation</a>
             </div>
         </section>
     </main>
@@ -175,14 +187,14 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <h4>Zubr Technologies</h4>
-                    <p>AI-driven weed detection for hay and rangelands. Protecting forage quality and guiding efficient weed control across the Northern Rockies and beyond.</p>
+                    <p>Spectroscopy solutions for invasive species detection and plant confirmation.</p>
                 </div>
                 <div class="footer-section">
                     <h4>Products</h4>
                     <ul class="footer-links">
-                        <li><a href="products.html">HayGuard™ Analyzer</a></li>
-                        <li><a href="products.html">FieldScan™ Mapping</a></li>
-                        <li><a href="products.html">SpectraCloud™ Portal</a></li>
+                        <li><a href="products.html">Handheld Scanner Solution</a></li>
+                        <li><a href="products.html">Standoff Scanner Solution</a></li>
+                        <li><a href="products.html">UAV Mapping Solution</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
