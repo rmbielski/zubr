@@ -611,6 +611,31 @@ main {
     font-weight: bold;
 }
 
+.product-feature {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+    align-items: stretch;
+}
+
+.product-diagram {
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-sm);
+    box-shadow: var(--box-shadow-lg);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-diagram-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 12px;
+}
+
 /* Pricing Cards */
 .pricing-grid {
     display: grid;
@@ -954,6 +979,10 @@ main {
     .cards-grid {
         grid-template-columns: repeat(2, 1fr);
     }
+
+    .product-feature {
+        grid-template-columns: 1fr 1.2fr;
+    }
     
     .pricing-grid {
         grid-template-columns: repeat(3, 1fr);
@@ -991,8 +1020,8 @@ main {
         grid-template-columns: repeat(3, 1fr);
     }
 
-    .products-grid {
-        grid-template-columns: repeat(2, 1fr);
+    .product-feature {
+        grid-template-columns: 0.95fr 1.35fr;
     }
 }
 
