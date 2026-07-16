@@ -1070,3 +1070,235 @@ main {
 @media (min-width: 992px) {
     .four-col { grid-template-columns: repeat(4, 1fr); }
 }
+
+/* =====================================================================
+   NEW COMPONENTS (2026 refresh — services model, People, imagery)
+   Added when the handheld scanner product was retired and Zubr shifted
+   to a rangeland-intelligence *service* business. Grouped here so it is
+   easy to find/remove during debugging.
+   ===================================================================== */
+
+/* --- Split hero: copy on the left, media placeholder on the right ----
+   Opt-in via <div class="hero-grid hero-grid-split">. The default
+   .hero-grid stays single-column & centered for interior pages. */
+@media (min-width: 992px) {
+    .hero-grid-split {
+        grid-template-columns: 1.05fr 0.95fr;
+        text-align: left;
+    }
+    /* Undo the centered-text override the base hero applies */
+    .hero-grid-split .subhead { margin-left: 0; margin-right: 0; }
+    .hero-grid-split .hero-visual { display: block; } /* base rule hides it */
+}
+
+/* --- Media placeholder ------------------------------------------------
+   Reusable "insert image here" box. Swap the inner .media-placeholder-note
+   text for a real <img> when assets are ready. Keeps aspect ratio so the
+   layout doesn't jump once the photo/screenshot is dropped in. */
+.media-placeholder {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-xl);
+    border: 2px dashed rgba(114, 239, 221, 0.35);
+    border-radius: 16px;
+    background: linear-gradient(135deg, rgba(255,94,223,0.08), rgba(4,200,222,0.08));
+    color: var(--color-text-light);
+    box-shadow: var(--box-shadow-lg);
+}
+
+/* 16:10 framed variant for the hero dashboard mockup */
+.media-placeholder.media-hero {
+    aspect-ratio: 16 / 10;
+    padding: var(--spacing-lg);
+}
+
+.media-placeholder-label {
+    font-size: var(--font-size-sm);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+}
+
+.media-placeholder-note {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+    max-width: 34ch;
+}
+
+/* Little camera glyph so it reads as "image goes here" at a glance */
+.media-placeholder-icon {
+    font-size: var(--font-size-3xl);
+    filter: drop-shadow(0 0 12px rgba(4, 200, 222, 0.4));
+}
+
+/* --- Stats / impact band ---------------------------------------------
+   Big-number row used on the homepage. Numbers pulled from the proposal's
+   Broader Impacts section (yield loss, invasion cost, mapping accuracy). */
+.stats-band {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+    text-align: center;
+}
+
+.stat-number {
+    font-size: var(--font-size-4xl);
+    font-weight: 700;
+    line-height: 1.1;
+    background: var(--gradient-rainbow);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: var(--spacing-xs);
+}
+
+.stat-label {
+    color: var(--color-text-light);
+    font-size: var(--font-size-sm);
+    max-width: 30ch;
+    margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+    .stats-band { grid-template-columns: repeat(4, 1fr); }
+}
+
+/* --- People grid (About page) ----------------------------------------
+   Photo + name + role + short bio. .person-photo is a placeholder circle
+   until real headshots of Rustin / Jessica are added. */
+.people-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+    .people-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+.person-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-lg);
+    box-shadow: var(--box-shadow-lg);
+    text-align: center;
+}
+
+/* Placeholder headshot: swap the whole block for <img class="person-photo"> */
+.person-photo {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto var(--spacing-md);
+    border-radius: 50%;
+    object-fit: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px dashed rgba(114, 239, 221, 0.4);
+    background: linear-gradient(135deg, rgba(255,94,223,0.12), rgba(4,200,222,0.12));
+    color: var(--color-text-muted);
+    font-size: var(--font-size-sm);
+    text-align: center;
+    line-height: 1.2;
+}
+
+.person-card h3 { margin-bottom: var(--spacing-xs); }
+
+.person-role {
+    color: var(--color-accent);
+    font-weight: 600;
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--spacing-sm);
+}
+
+.person-card p { color: var(--color-text-light); margin-bottom: 0; }
+
+/* --- Partner logos grid (About page) ---------------------------------
+   Each tile is a labeled placeholder for a partner/collaborator logo. */
+.partners-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-md);
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+    .partners-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+.partner-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-lg);
+    text-align: center;
+    box-shadow: var(--box-shadow);
+}
+
+/* Logo placeholder strip inside each partner tile */
+.partner-logo {
+    height: 56px;
+    margin-bottom: var(--spacing-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px dashed rgba(114, 239, 221, 0.3);
+    border-radius: var(--border-radius-sm);
+    color: var(--color-text-muted);
+    font-size: var(--font-size-sm);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.partner-card h4 { margin-bottom: var(--spacing-xs); font-size: var(--font-size-base); }
+.partner-card p { color: var(--color-text-muted); font-size: var(--font-size-sm); margin-bottom: 0; }
+
+/* --- "How it works" pipeline (homepage / technology) -----------------
+   Horizontal, numbered flow from field data to a delivered decision. */
+.pipeline {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--spacing-lg);
+    counter-reset: pipeline;
+}
+
+@media (min-width: 768px) {
+    .pipeline { grid-template-columns: repeat(4, 1fr); }
+}
+
+.pipeline-step {
+    position: relative;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--border-radius);
+    padding: var(--spacing-lg);
+    box-shadow: var(--box-shadow);
+}
+
+.pipeline-step::before {
+    counter-increment: pipeline;
+    content: counter(pipeline);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    margin-bottom: var(--spacing-sm);
+    border-radius: 50%;
+    background: var(--gradient-rainbow);
+    color: #0b1021;
+    font-weight: 700;
+}
+
+.pipeline-step h3 { font-size: var(--font-size-lg); margin-bottom: var(--spacing-xs); }
+.pipeline-step p { color: var(--color-text-light); margin-bottom: 0; font-size: var(--font-size-sm); }

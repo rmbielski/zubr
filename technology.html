@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Zubr Technologies technology platform: hyperspectral UAV sensors, satellite imagery, handheld NIR, and ML model pipelines for rangeland mapping, forage analysis, and conservation data products.">
+    <meta name="description" content="Zubr Technologies platform: benchtop NIR spectroscopy, hyperspectral and lidar UAV surveys, satellite data, and interpretable ML models that bridge lab chemistry to forage-quality decisions.">
     <title>Technology - Zubr Technologies</title>
     <link rel="stylesheet" href="assets/css/styles.css?v=003">
     <link rel="icon" type="image/png" href="assets/images/image_logo_trans2.png">
@@ -47,8 +47,8 @@
                 <div class="hero-grid">
                     <div class="hero-copy">
                         <div class="eyebrow">Technology</div>
-                        <h1>A multi-sensor platform built for rangeland and conservation data.</h1>
-                        <p class="subhead">Hyperspectral UAV surveys, satellite data integration, handheld NIR, and custom ML models — combined into scalable workflows for mapping, analysis, and program documentation.</p>
+                        <h1>A cross-scale bridge from lab chemistry to forage decisions.</h1>
+                        <p class="subhead">Benchtop NIR spectroscopy, hyperspectral and lidar UAV surveys, satellite data, and interpretable ML models — combined into a transferable, field-validated pipeline for forage quality and invasive-grass detection.</p>
                         <div class="hero-buttons">
                             <a href="services.html" class="btn btn-primary">See our services</a>
                             <a href="resources.html" class="btn btn-secondary">Review resources</a>
@@ -66,28 +66,31 @@
                     <p>Multiple platforms, calibrated to work together.</p>
                 </div>
                 <div class="cards-grid">
+                    <!-- Bench: the reference framework that anchors everything downstream -->
                     <div class="card">
-                        <h3>Hyperspectral UAV Sensors</h3>
+                        <h3>Benchtop NIR Spectroscopy</h3>
                         <ul>
-                            <li>Airborne sensors collecting tens to hundreds of spectral bands</li>
-                            <li>Centimeter-to-meter resolution over large coverage areas</li>
-                            <li>Plant species, biomass, and stress mapping from the air</li>
+                            <li>Full-range (450–2500 nm) reflectance on dried, ground samples</li>
+                            <li>Calibrations for silica, nitrogen (crude protein), and fiber (NDF)</li>
+                            <li>Chemometrics identify the wavelengths that carry stable signal</li>
                         </ul>
                     </div>
+                    <!-- Canopy: scales the bench signal to real acres -->
+                    <div class="card">
+                        <h3>Hyperspectral &amp; Lidar UAV</h3>
+                        <ul>
+                            <li>Full-spectrum hyperspectral plus lidar structure from the air</li>
+                            <li>Centimeter-to-meter resolution over large coverage areas</li>
+                            <li>Species discrimination, forage chemistry, and biomass at canopy scale</li>
+                        </ul>
+                    </div>
+                    <!-- Landscape: wall-to-wall context -->
                     <div class="card">
                         <h3>Satellite Data</h3>
                         <ul>
                             <li>Sentinel-2, Landsat, and Planet for landscape-scale coverage</li>
                             <li>Time-series analysis for change detection and phenology</li>
-                            <li>Coarser resolution complemented by UAV ground truth</li>
-                        </ul>
-                    </div>
-                    <div class="card">
-                        <h3>Handheld NIR</h3>
-                        <ul>
-                            <li>Close-range scanning for bale, forage, and direct plant confirmation</li>
-                            <li>Calibrated models for species identity and chemistry (crude protein, ADF/NDF)</li>
-                            <li>Smartphone-based workflow for fast field use</li>
+                            <li>Coarser resolution anchored by UAV and field ground truth</li>
                         </ul>
                     </div>
                 </div>
@@ -139,8 +142,8 @@
                         <p>Documentation designed to support EQIP applications, Defend the Core submissions, and internal management records.</p>
                     </div>
                     <div class="benefit-card">
-                        <h3>Screening reports with confidence scores</h3>
-                        <p>Per-scan or per-lot outputs with pass/warn/flag results, chemistry estimates, and documented performance bounds.</p>
+                        <h3>Decision outputs with uncertainty</h3>
+                        <p>Per-pasture grazing-days, AUMs, nutritional-risk classes, and treatment-priority scores — with calibrated per-pixel uncertainty so low-confidence areas defer rather than mislead.</p>
                     </div>
                 </div>
             </div>
@@ -155,16 +158,16 @@
                 </div>
                 <div class="cards-grid">
                     <div class="card">
-                        <h3>NIR spectroscopy and plant chemistry</h3>
-                        <p>Near-infrared light measures overtone and combination bands tied to O-H, C-H, and N-H bonds. Differences in water, cellulose, lignin, protein, and mineral content create repeatable spectral fingerprints across plant species.</p>
+                        <h3>Reflectance encodes chemistry &amp; structure</h3>
+                        <p>Across 400–2500 nm, nitrogen and fiber express diagnostic SWIR absorption features while silica — deposited in grasses as amorphous opal (phytoliths) — leaves fingerprints in the VNIR and SWIR. Where those wavelengths sit decides sensor cost and feasibility.</p>
                     </div>
                     <div class="card">
-                        <h3>ML detection in mixed media</h3>
-                        <p>We use preprocessing and models like PLS-DA, SVM, and lightweight neural networks to isolate species signatures. Training across diverse mixtures enables detection even when targets are diluted in other materials.</p>
+                        <h3>Transferability is the hard part</h3>
+                        <p>Models calibrated in one community or growth stage rarely hold in the next. We use stratified sampling, feature selection, and spectral unmixing (separating green vegetation from litter, soil, and shadow) to find signal that actually transfers across species, season, and site.</p>
                     </div>
                     <div class="card">
-                        <h3>Integrated platform, not just sensors</h3>
-                        <p>Zubr's differentiation is the combination of sensor calibration, domain-specific ML models, and conservation program knowledge. Off-the-shelf hardware is the starting point, not the product.</p>
+                        <h3>The asset is the calibration, not the hardware</h3>
+                        <p>Zubr's durable advantage is a proprietary, community-stratified calibration dataset and the workflow that builds it — carrying forage-chemistry signals from bench to UAV to satellite. No open dataset fills that gap.</p>
                     </div>
                 </div>
             </div>
@@ -189,7 +192,7 @@
                         <div class="step-number">2</div>
                         <div class="step-content">
                             <h3>Collect and calibrate</h3>
-                            <p>UAV flights, satellite data pulls, or field NIR scanning — per the agreed plan and sampling design.</p>
+                            <p>UAV flights, satellite data pulls, and stratified field sampling with lab chemistry — per the agreed plan and sampling design.</p>
                         </div>
                     </div>
                     <div class="step">
@@ -231,10 +234,10 @@
                 <div class="footer-section">
                     <h4>Services</h4>
                     <ul class="footer-links">
-                        <li><a href="services.html">Ecosystem Mapping</a></li>
-                        <li><a href="services.html">Forage &amp; Rangeland Analysis</a></li>
-                        <li><a href="services.html">Rangeland Conservation Support</a></li>
-                        <li><a href="services.html">Technology &amp; Model Development</a></li>
+                        <li><a href="services.html">Forage Intelligence Report</a></li>
+                        <li><a href="services.html">Treatment ROI Monitoring</a></li>
+                        <li><a href="services.html">Conservation Documentation</a></li>
+                        <li><a href="services.html">Advisor &amp; Cooperative Platform</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">

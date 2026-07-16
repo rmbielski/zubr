@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Zubr Technologies provides ecosystem mapping, forage analysis, conservation program support, technology engineering, and custom model development for ranchers, land managers, and conservation programs.">
+    <meta name="description" content="Zubr Technologies is a rangeland-intelligence service — hyperspectral remote sensing and field-calibrated models that turn imagery into forage-quality maps and grazing, forage, and treatment decisions.">
     <title>Zubr Technologies — Environmental Technology and Data Services</title>
     <link rel="stylesheet" href="assets/css/styles.css?v=003">
     <link rel="icon" type="image/png" href="assets/images/image_logo_trans2.png">
@@ -42,91 +42,160 @@
     <!-- Main Content -->
     <main id="main-content">
         <!-- Hero Section -->
+        <!-- Split hero: value proposition on the left, product dashboard mockup on the right.
+             Uses .hero-grid-split (see styles.css) so it goes two-column on desktop. -->
         <section class="hero">
             <div class="container">
-                <div class="hero-grid">
+                <div class="hero-grid hero-grid-split">
                     <div class="hero-copy">
                         <div class="eyebrow">Zubr Technologies</div>
-                        <h1>Environmental technology and data services for rangelands.</h1>
-                        <p class="subhead">We map, analyze, and document rangeland ecosystems for ranchers, land managers, and conservation programs — from hyperspectral UAV surveys to EQIP baseline reports to custom sensor engineering.</p>
+                        <h1>Turn rangeland imagery into grazing, forage, and treatment decisions.</h1>
+                        <p class="subhead">Zubr is a rangeland-intelligence service. We fuse hyperspectral remote sensing, field-calibrated lab chemistry, and machine learning into forage-quality maps and decision reports for the advisors, districts, and cooperatives that manage western working lands.</p>
                         <div class="hero-buttons">
-                            <a href="contact.html" class="btn btn-primary">Talk to us about your project</a>
+                            <a href="contact.html" class="btn btn-primary">Talk to us about your rangeland</a>
                             <a href="services.html" class="btn btn-secondary">Explore our services</a>
                         </div>
                     </div>
+                    <!-- Hero visual: placeholder for the RangelandAI-style decision dashboard.
+                         SWAP: replace this whole .media-placeholder block with
+                         <div class="hero-image-frame"><img src="assets/images/hero-dashboard.png" alt="..."></div> -->
+                    <div class="hero-visual">
+                        <div class="media-placeholder media-hero">
+                            <span class="media-placeholder-icon" aria-hidden="true">🛰️</span>
+                            <span class="media-placeholder-label">Image placeholder</span>
+                            <p class="media-placeholder-note">Rangeland decision dashboard: forage-quality heat map with crude protein, silica, biomass, and available AUMs by pasture.</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- What We Do -->
+        <!-- What We Do — four productized service lines (per the STTR plan).
+             Replaces the old capability pillars + retired handheld-scanner card. -->
         <section class="section">
             <div class="container">
                 <div class="section-title">
-                    <h2>What we do</h2>
-                    <p>Four integrated services built on spectroscopy, remote sensing, and domain knowledge.</p>
+                    <h2>What we deliver</h2>
+                    <p>Four service lines that share one engine and one growing calibration dataset — so every new customer strengthens the asset that serves the rest.</p>
                 </div>
                 <div class="four-col">
                     <div class="benefit-card">
-                        <h3>Ecosystem Mapping</h3>
-                        <p>Invasive species mapping, habitat characterization, and change detection via hyperspectral UAV and satellite data.</p>
+                        <h3>Forage Intelligence Report</h3>
+                        <p>Seasonal or one-time assessment of forage quantity, quality, and grazing capacity for a ranch, allotment, or treatment area.</p>
                     </div>
                     <div class="benefit-card">
-                        <h3>Forage &amp; Rangeland Analysis</h3>
-                        <p>Crude protein, fiber content, biomass, and species composition from NIR and aerial data.</p>
+                        <h3>Treatment ROI Monitoring</h3>
+                        <p>Before-and-after measurement of vegetation response and recovered forage value from weed control or restoration work.</p>
                     </div>
                     <div class="benefit-card">
-                        <h3>Rangeland Conservation Support</h3>
-                        <p>Baseline mapping and documentation for clients working with WLFW, NRCS, and related rangeland conservation programs.</p>
+                        <h3>Conservation Documentation</h3>
+                        <p>Program-ready baselines and before/after monitoring for NRCS-style conservation and Defend the Core work.</p>
                     </div>
                     <div class="benefit-card">
-                        <h3>Technology &amp; Model Development</h3>
-                        <p>Custom sensor design, calibrations, and ML model R&amp;D. The handheld NIR hay bale scanner is a working example.</p>
+                        <h3>Advisor &amp; Cooperative Platform</h3>
+                        <p>Multi-property monitoring with standardized, white-label reporting — and, over time, dashboard access.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- How We Work -->
+        <!-- How It Works — the field-to-decision pipeline.
+             Inspired by pasture.io / farmote.com "how it works" flows. -->
         <section class="section section-light">
             <div class="container">
                 <div class="section-title">
-                    <h2>How we work</h2>
-                    <p>Scoped to your goals, delivered with documentation.</p>
+                    <h2>How it works</h2>
+                    <p>A field-validated bridge from imagery to forage decisions.</p>
                 </div>
-                <div class="steps">
-                    <div class="step">
-                        <div class="step-number">1</div>
-                        <div class="step-content">
-                            <h3>Understand the need</h3>
-                            <p>Species targets, program requirements, geography, and timeline — scoped before any work starts.</p>
-                        </div>
+                <div class="pipeline">
+                    <div class="pipeline-step">
+                        <h3>Calibrate</h3>
+                        <p>Field crews collect grass samples; lab chemistry (silica, nitrogen, fiber) anchors our spectral calibration library.</p>
                     </div>
-                    <div class="step">
-                        <div class="step-number">2</div>
-                        <div class="step-content">
-                            <h3>Collect and process</h3>
-                            <p>UAV surveys, satellite data, or field NIR scanning — model training and QA per the plan.</p>
-                        </div>
+                    <div class="pipeline-step">
+                        <h3>Fly</h3>
+                        <p>Hyperspectral and lidar UAV surveys scale those signals from the bench to the canopy across your acres.</p>
                     </div>
-                    <div class="step">
-                        <div class="step-number">3</div>
-                        <div class="step-content">
-                            <h3>Deliver and support</h3>
-                            <p>GIS maps, analysis reports, and program documentation — formatted for the workflows you actually use.</p>
-                        </div>
+                    <div class="pipeline-step">
+                        <h3>Model</h3>
+                        <p>Interpretable, uncertainty-aware models predict forage quality and biomass, and flag low-confidence pixels.</p>
+                    </div>
+                    <div class="pipeline-step">
+                        <h3>Decide</h3>
+                        <p>Maps become grazing-days, AUMs, nutritional-risk classes, and treatment-priority scores you can act on.</p>
+                    </div>
+                </div>
+                <!-- Optional supporting visual for the pipeline.
+                     SWAP: replace with a UAV/field-to-map process graphic. -->
+                <div class="media-placeholder" style="margin-top: var(--spacing-xl);">
+                    <span class="media-placeholder-icon" aria-hidden="true">🗺️</span>
+                    <span class="media-placeholder-label">Image placeholder</span>
+                    <p class="media-placeholder-note">Process graphic: field sampling → hyperspectral UAV flight → calibrated forage-quality map → decision report.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Impact / stats band — figures drawn from the proposal's Broader Impacts. -->
+        <section class="section">
+            <div class="container">
+                <div class="stats-band">
+                    <div class="stat">
+                        <div class="stat-number">75–80%</div>
+                        <p class="stat-label">forage yield loss documented in ventenata-invaded rangeland</p>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">$190B</div>
+                        <p class="stat-label">estimated U.S. cost of plant invasions — the second-costliest biological threat</p>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">450–2500&nbsp;nm</div>
+                        <p class="stat-label">spectral range we mine for silica, nitrogen, and fiber signatures</p>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">1&nbsp;pasture&nbsp;→&nbsp;millions&nbsp;of&nbsp;acres</div>
+                        <p class="stat-label">the range our calibrated models are built to scale across</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Who We Serve -->
-        <section class="section">
+        <section class="section section-light">
             <div class="container">
                 <div class="callout">
                     <h3>Who we work with</h3>
-                    <p>Ranchers and livestock producers. Land managers and grazing allotment holders. Weed districts and noxious weed coordinators. Conservation organizations and land trusts. NRCS program applicants and agency partners.</p>
-                    <a href="contact.html" class="btn btn-accent">Tell us about your project</a>
+                    <p>We sell to the organizations that manage and document decisions across many properties: grazing advisors and range consultants, conservation and weed districts, NRCS-style technical service providers, restoration and herbicide firms, grazing cooperatives, and agency staff managing federal and state grazing lands.</p>
+                    <a href="contact.html" class="btn btn-accent">Tell us about your rangeland</a>
                 </div>
+            </div>
+        </section>
+
+        <!-- Partners strip — research + engineering collaborators behind the venture. -->
+        <section class="section">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Built with research and engineering partners</h2>
+                    <p>An NSF STTR team spanning field science, optical engineering, and rangeland ecology.</p>
+                </div>
+                <div class="partners-grid">
+                    <!-- SWAP each .partner-logo placeholder with the partner's actual logo <img>. -->
+                    <div class="partner-card">
+                        <div class="partner-logo">Logo</div>
+                        <h4>UM Spatial Analysis Lab</h4>
+                        <p>University of Montana — field calibration &amp; validation</p>
+                    </div>
+                    <div class="partner-card">
+                        <div class="partner-logo">Logo</div>
+                        <h4>MSU Optical Technology Center</h4>
+                        <p>Montana State University — instrumentation &amp; optical engineering</p>
+                    </div>
+                    <div class="partner-card">
+                        <div class="partner-logo">Logo</div>
+                        <h4>MT Headwaters Tech Hub</h4>
+                        <p>Commercialization &amp; test-bed access</p>
+                    </div>
+                </div>
+                <p class="text-center" style="margin-top: var(--spacing-lg);"><a href="about.html">Meet the team &amp; partners →</a></p>
             </div>
         </section>
     </main>
@@ -142,10 +211,10 @@
                 <div class="footer-section">
                     <h4>Services</h4>
                     <ul class="footer-links">
-                        <li><a href="services.html">Ecosystem Mapping</a></li>
-                        <li><a href="services.html">Forage &amp; Rangeland Analysis</a></li>
-                        <li><a href="services.html">Rangeland Conservation Support</a></li>
-                        <li><a href="services.html">Technology &amp; Model Development</a></li>
+                        <li><a href="services.html">Forage Intelligence Report</a></li>
+                        <li><a href="services.html">Treatment ROI Monitoring</a></li>
+                        <li><a href="services.html">Conservation Documentation</a></li>
+                        <li><a href="services.html">Advisor &amp; Cooperative Platform</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
