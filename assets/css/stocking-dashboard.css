@@ -1,0 +1,1591 @@
+.forage-app {
+    --fw-bg: #07100e;
+    --fw-panel: #0d1916;
+    --fw-panel-2: #111f1b;
+    --fw-panel-3: #172823;
+    --fw-border: #263b34;
+    --fw-border-strong: #365249;
+    --fw-text: #eff8f3;
+    --fw-muted: #93aaa0;
+    --fw-soft: #c4d2cc;
+    --fw-green: #8ee3b1;
+    --fw-cyan: #68d6df;
+    --fw-amber: #f2bd60;
+    --fw-red: #ff7f79;
+    --fw-shadow: 0 24px 70px rgba(0, 0, 0, .32);
+    color: var(--fw-text);
+    color-scheme: dark;
+    background:
+        radial-gradient(circle at 12% -5%, rgba(104, 214, 223, .10), transparent 26rem),
+        radial-gradient(circle at 90% 10%, rgba(142, 227, 177, .08), transparent 28rem),
+        var(--fw-bg);
+    padding: calc(var(--header-height) + 14px) 14px 28px;
+    min-height: 100vh;
+}
+
+.forage-app *,
+.forage-app *::before,
+.forage-app *::after {
+    box-sizing: border-box;
+}
+
+.forage-app button,
+.forage-app input,
+.forage-app select {
+    font: inherit;
+}
+
+.forage-app button {
+    color: inherit;
+}
+
+.forage-app [hidden] {
+    display: none !important;
+}
+
+.forage-frame {
+    width: min(100%, 1600px);
+    margin: 0 auto;
+    border: 1px solid var(--fw-border);
+    border-radius: 18px;
+    background: #091310;
+    box-shadow: var(--fw-shadow);
+    overflow: hidden;
+}
+
+.forage-appbar {
+    min-height: 70px;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 18px;
+    padding: 11px 16px;
+    border-bottom: 1px solid var(--fw-border);
+    background: rgba(10, 22, 18, .96);
+}
+
+.forage-product {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+}
+
+.forage-product img {
+    width: 38px;
+    height: 38px;
+    object-fit: contain;
+}
+
+.forage-product div {
+    display: flex;
+    align-items: baseline;
+    gap: 7px;
+    white-space: nowrap;
+}
+
+.forage-product span {
+    color: var(--fw-muted);
+    font-size: 13px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+}
+
+.forage-product strong {
+    font-size: 19px;
+    letter-spacing: -.03em;
+}
+
+.forage-mode-switch {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 4px;
+    border: 1px solid var(--fw-border);
+    border-radius: 11px;
+    background: #07110e;
+}
+
+.forage-mode-switch button {
+    min-height: 38px;
+    padding: 7px 16px;
+    border: 0;
+    border-radius: 8px;
+    background: transparent;
+    color: var(--fw-muted);
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.forage-mode-switch button:hover,
+.forage-mode-switch button:focus-visible {
+    color: var(--fw-text);
+}
+
+.forage-mode-switch button.is-active {
+    color: #06110d;
+    background: var(--fw-green);
+    box-shadow: 0 5px 18px rgba(142, 227, 177, .13);
+}
+
+.forage-appbar-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+.forage-local-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    color: var(--fw-muted);
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+.forage-local-badge i,
+.forage-map-status i,
+.forage-readiness-list i,
+.forage-layer-note i {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--fw-green);
+    box-shadow: 0 0 0 4px rgba(142, 227, 177, .1);
+}
+
+.forage-workspace {
+    display: grid;
+    grid-template-columns: 308px minmax(500px, 1fr) 286px;
+    align-items: stretch;
+    height: clamp(740px, calc(100vh - 168px), 920px);
+    min-height: 740px;
+}
+
+.forage-sidebar {
+    min-width: 0;
+    overflow-y: auto;
+    scrollbar-color: var(--fw-border-strong) transparent;
+    scrollbar-width: thin;
+    background: #0a1512;
+}
+
+.forage-sidebar-left {
+    border-right: 1px solid var(--fw-border);
+}
+
+.forage-sidebar-right {
+    border-left: 1px solid var(--fw-border);
+}
+
+.forage-card {
+    padding: 19px 18px;
+    border-bottom: 1px solid var(--fw-border);
+}
+
+.forage-card h1,
+.forage-card h2,
+.forage-card p {
+    margin: 0;
+}
+
+.forage-card-title {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    margin-bottom: 16px;
+}
+
+.forage-card-title > span,
+.forage-kicker {
+    color: var(--fw-green);
+    font-size: 11px;
+    line-height: 1;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+}
+
+.forage-card-title h1,
+.forage-card-title h2 {
+    color: var(--fw-text);
+    font-size: 16px;
+    line-height: 1.2;
+    font-weight: 650;
+    letter-spacing: -.015em;
+}
+
+.forage-field {
+    display: grid;
+    gap: 7px;
+    color: var(--fw-muted);
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.forage-field input,
+.forage-field select,
+.forage-map-actions select {
+    width: 100%;
+    min-height: 42px;
+    border: 1px solid var(--fw-border);
+    border-radius: 8px;
+    outline: 0;
+    padding: 8px 10px;
+    color: var(--fw-text);
+    background: #08120f;
+    font-size: 14px;
+}
+
+.forage-field input:focus,
+.forage-field select:focus,
+.forage-map-actions select:focus {
+    border-color: var(--fw-cyan);
+    box-shadow: 0 0 0 3px rgba(104, 214, 223, .12);
+}
+
+.forage-date-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.forage-source-policy {
+    display: grid;
+    gap: 5px;
+    margin-top: 12px;
+    padding: 12px;
+    border: 1px solid rgba(104, 214, 223, .22);
+    border-radius: 9px;
+    background: rgba(104, 214, 223, .045);
+}
+
+.forage-source-policy > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.forage-source-policy > div span,
+.forage-source-policy > div b {
+    color: var(--fw-muted);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+}
+
+.forage-source-policy > div b {
+    color: var(--fw-green);
+}
+
+.forage-source-policy > strong {
+    color: var(--fw-soft);
+    font-size: 13px;
+}
+
+.forage-source-policy p {
+    margin: 0;
+    color: var(--fw-muted);
+    font-size: 11px;
+    line-height: 1.45;
+}
+
+.forage-boundary-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin: 12px 0;
+}
+
+.forage-boundary-stats > div {
+    display: grid;
+    gap: 1px;
+    padding: 11px 12px;
+    border: 1px solid var(--fw-border);
+    border-radius: 9px;
+    background: var(--fw-panel);
+}
+
+.forage-boundary-stats strong {
+    color: var(--fw-text);
+    font-size: 20px;
+    line-height: 1.1;
+    letter-spacing: -.04em;
+}
+
+.forage-boundary-stats span {
+    color: var(--fw-muted);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+}
+
+.forage-pasture-list {
+    display: grid;
+    gap: 6px;
+    max-height: 174px;
+    margin: 0 0 11px;
+    overflow-y: auto;
+}
+
+.forage-pasture-row {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr) auto auto;
+    align-items: center;
+    gap: 7px;
+    min-height: 38px;
+    padding: 5px 6px;
+    border: 1px solid var(--fw-border);
+    border-radius: 8px;
+    background: var(--fw-panel);
+}
+
+.forage-pasture-row > i {
+    width: 9px;
+    height: 9px;
+    border-radius: 2px;
+    background: var(--fw-cyan);
+    box-shadow: 0 0 0 3px rgba(104, 214, 223, .1);
+}
+
+.forage-pasture-row input {
+    min-width: 0;
+    width: 100%;
+    border: 0;
+    outline: 0;
+    color: var(--fw-soft);
+    background: transparent;
+    font-size: 12px;
+    font-weight: 650;
+}
+
+.forage-pasture-row input:focus {
+    color: var(--fw-text);
+    box-shadow: 0 1px 0 var(--fw-cyan);
+}
+
+.forage-pasture-row span {
+    color: var(--fw-muted);
+    font-size: 10px;
+    white-space: nowrap;
+}
+
+.forage-pasture-row button {
+    width: 27px;
+    height: 27px;
+    border: 0;
+    border-radius: 6px;
+    color: var(--fw-muted);
+    background: transparent;
+    cursor: pointer;
+    font-size: 17px;
+    line-height: 1;
+}
+
+.forage-pasture-row button:hover,
+.forage-pasture-row button:focus-visible {
+    color: var(--fw-red);
+    background: rgba(255, 127, 121, .08);
+}
+
+.forage-action-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 7px;
+}
+
+.forage-button,
+.forage-icon-button,
+.forage-text-button {
+    border: 0;
+    cursor: pointer;
+}
+
+.forage-button {
+    min-height: 40px;
+    padding: 8px 12px;
+    border: 1px solid var(--fw-green);
+    border-radius: 8px;
+    background: var(--fw-green);
+    color: #06110d !important;
+    font-size: 13px;
+    line-height: 1.2;
+    font-weight: 700;
+}
+
+.forage-button:hover:not(:disabled),
+.forage-button:focus-visible:not(:disabled) {
+    filter: brightness(1.07);
+    transform: translateY(-1px);
+}
+
+.forage-button:focus-visible,
+.forage-icon-button:focus-visible,
+.forage-text-button:focus-visible,
+.forage-mode-switch button:focus-visible,
+.forage-layer-panel button:focus-visible,
+.forage-dropzone:focus-visible,
+.forage-run-button:focus-visible {
+    outline: 2px solid var(--fw-cyan);
+    outline-offset: 2px;
+}
+
+.forage-button:disabled {
+    cursor: not-allowed;
+    opacity: .42;
+}
+
+.forage-button-quiet {
+    border-color: var(--fw-border-strong);
+    color: var(--fw-soft) !important;
+    background: var(--fw-panel);
+}
+
+.forage-button-danger {
+    border-color: rgba(255, 127, 121, .28);
+    color: #ffc1bd !important;
+    background: rgba(255, 127, 121, .07);
+}
+
+.forage-help {
+    margin-top: 10px !important;
+    color: var(--fw-muted);
+    font-size: 12px;
+    line-height: 1.45;
+}
+
+.forage-range {
+    display: grid;
+    gap: 8px;
+    margin-top: 15px;
+}
+
+.forage-range span {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    color: var(--fw-muted);
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.forage-range output {
+    color: var(--fw-soft);
+}
+
+.forage-range input {
+    width: 100%;
+    accent-color: var(--fw-green);
+}
+
+.forage-uav-source {
+    display: grid;
+    gap: 12px;
+}
+
+.forage-dropzone {
+    min-height: 90px;
+    display: grid;
+    place-content: center;
+    gap: 3px;
+    width: 100%;
+    padding: 14px;
+    border: 1px dashed var(--fw-border-strong);
+    border-radius: 10px;
+    text-align: center;
+    color: var(--fw-soft);
+    background: rgba(104, 214, 223, .035);
+    cursor: pointer;
+}
+
+.forage-dropzone:hover {
+    border-color: var(--fw-cyan);
+    background: rgba(104, 214, 223, .07);
+}
+
+.forage-dropzone strong {
+    font-size: 14px;
+}
+
+.forage-dropzone span,
+.forage-file-status span {
+    color: var(--fw-muted);
+    font-size: 11px;
+}
+
+.forage-file-status {
+    display: grid;
+    gap: 2px;
+    padding: 10px 12px;
+    border-left: 3px solid var(--fw-green);
+    background: var(--fw-panel);
+}
+
+.forage-file-status strong {
+    max-width: 245px;
+    overflow: hidden;
+    color: var(--fw-soft);
+    font-size: 12px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.forage-metric-list {
+    display: grid;
+    gap: 7px;
+}
+
+.forage-metric-group + .forage-metric-group {
+    margin-top: 12px;
+    padding-top: 12px;
+    border-top: 1px solid var(--fw-border);
+}
+
+.forage-metric-group-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    margin-bottom: 7px;
+    color: var(--fw-muted);
+}
+
+.forage-metric-group-title span,
+.forage-metric-group-title b {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+}
+
+.forage-metric-group-title b {
+    font-weight: 500;
+    letter-spacing: 0;
+    text-transform: none;
+}
+
+.forage-metric-group-invasive .forage-metric-group-title span {
+    color: var(--fw-amber);
+}
+
+.forage-metric-group-invasive .forage-metric-list label {
+    border-color: rgba(242, 189, 96, .35);
+    background: rgba(242, 189, 96, .055);
+}
+
+.forage-metric-group-invasive .forage-metric-list input {
+    accent-color: var(--fw-amber);
+}
+
+.forage-metric-list label {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 10px;
+    min-height: 48px;
+    padding: 7px 9px;
+    border: 1px solid var(--fw-border);
+    border-radius: 8px;
+    background: var(--fw-panel);
+    cursor: pointer;
+}
+
+.forage-metric-list label:has(input:disabled) {
+    cursor: not-allowed;
+    opacity: .52;
+}
+
+.forage-metric-list input {
+    width: 17px;
+    height: 17px;
+    accent-color: var(--fw-green);
+}
+
+.forage-metric-list span {
+    display: grid;
+    gap: 1px;
+}
+
+.forage-metric-list strong {
+    color: var(--fw-soft);
+    font-size: 13px;
+}
+
+.forage-metric-list small,
+.forage-metric-list b {
+    color: var(--fw-muted);
+    font-size: 10px;
+    font-weight: 500;
+}
+
+.forage-metric-list b {
+    padding: 3px 5px;
+    border-radius: 4px;
+    background: var(--fw-panel-3);
+}
+
+.forage-run-button {
+    width: 100%;
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 15px;
+    padding: 10px 14px;
+    border: 1px solid var(--fw-green);
+    border-radius: 9px;
+    color: #06110d;
+    background: var(--fw-green);
+    cursor: pointer;
+    font-weight: 750;
+}
+
+.forage-run-button:disabled {
+    cursor: wait;
+    opacity: .7;
+}
+
+.forage-run-button span {
+    font-size: 21px;
+}
+
+.forage-herd-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 8px;
+}
+
+.forage-field-wide {
+    grid-column: 1 / -1;
+}
+
+.forage-demand-output {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    gap: 2px 10px;
+    margin-top: 13px;
+    padding: 11px 12px;
+    border: 1px solid var(--fw-border-strong);
+    border-radius: 9px;
+    background: linear-gradient(145deg, rgba(142, 227, 177, .08), rgba(104, 214, 223, .025));
+}
+
+.forage-demand-output > span {
+    color: var(--fw-muted);
+    font-size: 11px;
+}
+
+.forage-demand-output > strong {
+    grid-row: span 2;
+    color: var(--fw-text);
+    font-size: 12px;
+}
+
+.forage-demand-output > strong b {
+    color: var(--fw-green);
+    font-size: 20px;
+    letter-spacing: -.04em;
+}
+
+.forage-demand-output small {
+    color: var(--fw-muted);
+    font-size: 9px;
+}
+
+.forage-map-panel {
+    min-width: 0;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    background: #091410;
+}
+
+.forage-map-toolbar {
+    min-height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--fw-border);
+    background: #0b1713;
+}
+
+.forage-map-toolbar > div:first-child {
+    display: grid;
+    gap: 1px;
+}
+
+.forage-map-toolbar > div:first-child span {
+    color: var(--fw-green);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+}
+
+.forage-map-toolbar > div:first-child strong {
+    font-size: 15px;
+}
+
+.forage-map-actions {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+}
+
+.forage-map-actions label {
+    display: grid;
+    gap: 2px;
+    color: var(--fw-muted);
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+}
+
+.forage-map-actions select {
+    width: 112px;
+    min-height: 36px;
+    padding: 5px 8px;
+    font-size: 12px;
+    text-transform: none;
+    letter-spacing: 0;
+}
+
+.forage-icon-button {
+    min-height: 36px;
+    padding: 7px 10px;
+    border: 1px solid var(--fw-border-strong);
+    border-radius: 7px;
+    color: var(--fw-soft) !important;
+    background: var(--fw-panel);
+    font-size: 12px;
+    font-weight: 650;
+}
+
+.forage-map-wrap {
+    position: relative;
+    min-height: 0;
+    overflow: hidden;
+    background: #263632;
+}
+
+.forage-map {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    background: #263632;
+}
+
+.forage-map-prompt,
+.forage-map-error {
+    position: absolute;
+    z-index: 650;
+    top: 50%;
+    left: 50%;
+    width: min(330px, calc(100% - 32px));
+    display: grid;
+    justify-items: center;
+    gap: 8px;
+    padding: 22px;
+    border: 1px solid rgba(255, 255, 255, .16);
+    border-radius: 13px;
+    color: var(--fw-text);
+    background: rgba(6, 16, 13, .92);
+    box-shadow: 0 16px 45px rgba(0, 0, 0, .35);
+    text-align: center;
+    transform: translate(-50%, -50%);
+    backdrop-filter: blur(10px);
+}
+
+.forage-map-prompt > span {
+    color: var(--fw-green);
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+}
+
+.forage-map-prompt strong,
+.forage-map-error strong {
+    font-size: 17px;
+    line-height: 1.25;
+}
+
+.forage-map-prompt p,
+.forage-map-error span {
+    margin: 0;
+    color: var(--fw-muted);
+    font-size: 13px;
+}
+
+.forage-map-prompt .forage-button {
+    min-width: 130px;
+    margin-top: 3px;
+}
+
+.forage-map-error {
+    border-color: rgba(255, 127, 121, .4);
+}
+
+.forage-layer-panel {
+    position: absolute;
+    z-index: 640;
+    right: 12px;
+    top: 12px;
+    width: 218px;
+    padding: 8px;
+    border: 1px solid rgba(255, 255, 255, .15);
+    border-radius: 11px;
+    background: rgba(7, 17, 14, .92);
+    box-shadow: 0 12px 34px rgba(0, 0, 0, .25);
+    backdrop-filter: blur(10px);
+}
+
+.forage-layer-heading {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px 6px 8px;
+    border: 0;
+    border-bottom: 1px solid rgba(255, 255, 255, .1);
+    color: var(--fw-text);
+    background: transparent;
+    cursor: pointer;
+    text-align: left;
+}
+
+.forage-layer-heading > span {
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.forage-layer-heading b {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    color: var(--fw-muted);
+    font-size: 9px;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+}
+
+.forage-layer-heading i {
+    color: var(--fw-green);
+    font-style: normal;
+    font-size: 13px;
+    line-height: 1;
+    transition: transform .18s ease;
+}
+
+.forage-layer-panel.is-collapsed .forage-layer-heading {
+    padding-bottom: 5px;
+    border-bottom: 0;
+}
+
+.forage-layer-panel.is-collapsed .forage-layer-heading i {
+    transform: rotate(180deg);
+}
+
+.forage-layer-panel-body {
+    padding-top: 5px;
+}
+
+.forage-layer-group + .forage-layer-group {
+    margin-top: 7px;
+    padding-top: 7px;
+    border-top: 1px solid rgba(255, 255, 255, .1);
+}
+
+.forage-layer-group-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 4px 6px;
+    color: var(--fw-muted);
+}
+
+.forage-layer-group-title span {
+    font-size: 9px;
+    font-weight: 750;
+    letter-spacing: .09em;
+    text-transform: uppercase;
+}
+
+.forage-layer-group-title b {
+    font-size: 9px;
+    font-weight: 500;
+}
+
+.forage-layer-group-invasive .forage-layer-group-title span {
+    color: var(--fw-amber);
+}
+
+.forage-layer-option {
+    width: 100%;
+    min-height: 34px;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    gap: 7px;
+    padding: 5px 6px;
+    border: 0;
+    border-radius: 6px;
+    color: var(--fw-soft);
+    background: transparent;
+    cursor: pointer;
+    text-align: left;
+}
+
+.forage-layer-option:hover {
+    background: rgba(255, 255, 255, .06);
+}
+
+.forage-layer-option i {
+    width: 9px;
+    height: 9px;
+    border: 1px solid var(--fw-muted);
+    border-radius: 2px;
+}
+
+.forage-layer-option.is-ready i {
+    border-color: var(--fw-green);
+    background: rgba(142, 227, 177, .35);
+}
+
+.forage-layer-option span {
+    font-size: 11px;
+}
+
+.forage-layer-option b {
+    color: var(--fw-amber);
+    font-size: 9px;
+    font-weight: 650;
+}
+
+.forage-layer-option.is-ready b {
+    color: var(--fw-muted);
+}
+
+.forage-layer-note {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: start;
+    gap: 8px;
+    margin-top: 5px;
+    padding: 8px 6px 3px;
+    border-top: 1px solid rgba(255, 255, 255, .1);
+    color: var(--fw-muted);
+    font-size: 9px;
+    line-height: 1.35;
+}
+
+.forage-layer-note i {
+    width: 6px;
+    height: 6px;
+    margin-top: 3px;
+    background: var(--fw-cyan);
+}
+
+.forage-map-status {
+    min-height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 7px 13px;
+    border-top: 1px solid var(--fw-border);
+    color: var(--fw-muted);
+    background: #0b1713;
+    font-size: 11px;
+}
+
+.forage-map-status span {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.forage-map-status i {
+    width: 6px;
+    height: 6px;
+}
+
+.forage-map-status b {
+    color: var(--fw-soft);
+    font-weight: 650;
+}
+
+.forage-status-card {
+    transition: border-color .2s ease, background .2s ease;
+}
+
+.forage-status-head {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: center;
+    gap: 10px;
+    padding: 12px;
+    border: 1px solid var(--fw-border);
+    border-radius: 9px;
+    background: var(--fw-panel);
+}
+
+.forage-status-head > i {
+    width: 12px;
+    height: 12px;
+    border: 2px solid var(--fw-muted);
+    border-radius: 50%;
+}
+
+.forage-status-head div {
+    display: grid;
+    gap: 2px;
+}
+
+.forage-status-head strong {
+    color: var(--fw-soft);
+    font-size: 13px;
+}
+
+.forage-status-head span {
+    color: var(--fw-muted);
+    font-size: 10px;
+}
+
+.forage-status-card > p {
+    margin-top: 11px;
+    color: var(--fw-muted);
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.forage-status-card[data-analysis-status="validating"] .forage-status-head > i {
+    border-color: var(--fw-cyan);
+    border-right-color: transparent;
+    animation: forage-spin .8s linear infinite;
+}
+
+.forage-status-card[data-analysis-status="failed"] .forage-status-head {
+    border-color: rgba(255, 127, 121, .35);
+    background: rgba(255, 127, 121, .055);
+}
+
+.forage-status-card[data-analysis-status="failed"] .forage-status-head > i {
+    border-color: var(--fw-red);
+    background: var(--fw-red);
+    box-shadow: 0 0 0 4px rgba(255, 127, 121, .1);
+}
+
+@keyframes forage-spin {
+    to { transform: rotate(360deg); }
+}
+
+.forage-pipeline {
+    display: grid;
+    gap: 0;
+    margin: 15px 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.forage-pipeline li {
+    position: relative;
+    display: grid;
+    grid-template-columns: 24px 1fr auto;
+    align-items: center;
+    gap: 8px;
+    min-height: 37px;
+    color: var(--fw-muted);
+    font-size: 10px;
+}
+
+.forage-pipeline li:not(:last-child)::after {
+    content: "";
+    position: absolute;
+    left: 11px;
+    top: 29px;
+    bottom: -8px;
+    width: 1px;
+    background: var(--fw-border);
+}
+
+.forage-pipeline i {
+    position: relative;
+    z-index: 1;
+    width: 23px;
+    height: 23px;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--fw-border-strong);
+    border-radius: 50%;
+    background: #0a1512;
+    color: var(--fw-muted);
+    font-style: normal;
+    font-size: 9px;
+}
+
+.forage-pipeline b {
+    color: var(--fw-muted);
+    font-weight: 600;
+}
+
+.forage-pipeline li.is-complete i {
+    border-color: var(--fw-green);
+    color: #06110d;
+    background: var(--fw-green);
+}
+
+.forage-pipeline li.is-complete b {
+    color: var(--fw-green);
+}
+
+.forage-pipeline li.is-error i {
+    border-color: var(--fw-red);
+    color: var(--fw-red);
+}
+
+.forage-pipeline li.is-error b {
+    color: var(--fw-red);
+}
+
+.forage-pipeline li.is-running i {
+    border-color: var(--fw-cyan);
+    border-right-color: transparent;
+    color: var(--fw-cyan);
+    animation: forage-spin .8s linear infinite;
+}
+
+.forage-pipeline li.is-running b {
+    color: var(--fw-cyan);
+}
+
+.forage-readiness-list {
+    display: grid;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.forage-readiness-list li {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    align-items: start;
+    gap: 9px;
+    color: var(--fw-soft);
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+.forage-readiness-list i {
+    width: 7px;
+    height: 7px;
+    margin-top: 5px;
+}
+
+.forage-readiness-list .is-pending i {
+    background: var(--fw-amber);
+    box-shadow: 0 0 0 4px rgba(242, 189, 96, .08);
+}
+
+.forage-access-card {
+    background: linear-gradient(150deg, rgba(104, 214, 223, .06), transparent 60%);
+}
+
+.forage-access-card h2 {
+    margin-top: 9px;
+    color: var(--fw-text);
+    font-size: 19px;
+    line-height: 1.25;
+    letter-spacing: -.035em;
+}
+
+.forage-access-card p {
+    margin-top: 10px;
+    color: var(--fw-muted);
+    font-size: 12px;
+    line-height: 1.55;
+}
+
+.forage-text-button {
+    margin-top: 12px;
+    padding: 3px 0;
+    color: var(--fw-green) !important;
+    background: transparent;
+    font-size: 12px;
+    font-weight: 700;
+    text-align: left;
+}
+
+.forage-dialog {
+    width: min(570px, calc(100% - 28px));
+    padding: 0;
+    border: 1px solid var(--fw-border-strong);
+    border-radius: 15px;
+    color: var(--fw-text);
+    background: #0b1713;
+    box-shadow: 0 35px 90px rgba(0, 0, 0, .6);
+}
+
+.forage-dialog::backdrop {
+    background: rgba(1, 7, 5, .76);
+    backdrop-filter: blur(5px);
+}
+
+.forage-dialog form {
+    position: relative;
+    padding: 27px;
+}
+
+.forage-dialog h2 {
+    max-width: 450px;
+    margin: 10px 0 12px;
+    color: var(--fw-text);
+    font-size: 26px;
+    line-height: 1.2;
+    letter-spacing: -.04em;
+}
+
+.forage-dialog p {
+    margin: 0;
+    color: var(--fw-muted);
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.forage-dialog-close {
+    position: absolute;
+    right: 14px;
+    top: 12px;
+    width: 36px;
+    height: 36px;
+    border: 0;
+    border-radius: 50%;
+    color: var(--fw-muted) !important;
+    background: var(--fw-panel);
+    cursor: pointer;
+    font-size: 21px;
+}
+
+.forage-dialog-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.forage-dialog-grid > div {
+    display: grid;
+    gap: 5px;
+    padding: 13px;
+    border: 1px solid var(--fw-border);
+    border-radius: 9px;
+    background: var(--fw-panel);
+}
+
+.forage-dialog-grid b {
+    color: var(--fw-green);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+}
+
+.forage-dialog-grid span {
+    color: var(--fw-soft);
+    font-size: 12px;
+    line-height: 1.45;
+}
+
+.forage-toast {
+    position: fixed;
+    z-index: 1500;
+    right: 20px;
+    bottom: 20px;
+    max-width: 390px;
+    padding: 12px 15px;
+    border: 1px solid var(--fw-border-strong);
+    border-radius: 9px;
+    color: var(--fw-text);
+    background: #10201b;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, .38);
+    font-size: 13px;
+}
+
+/* Leaflet remains fully interactive while matching the application chrome. */
+.forage-app .leaflet-container {
+    font-family: var(--font-family);
+}
+
+.forage-app .leaflet-bar {
+    border: 1px solid rgba(255, 255, 255, .18);
+    border-radius: 8px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, .22);
+    overflow: hidden;
+}
+
+.forage-app .leaflet-bar a,
+.forage-app .leaflet-bar a:hover {
+    border-color: var(--fw-border);
+    color: var(--fw-text);
+    background-color: rgba(7, 17, 14, .94);
+}
+
+.forage-app .leaflet-control-attribution {
+    color: #1f2b27;
+    background: rgba(255, 255, 255, .82);
+    font-size: 10px;
+}
+
+.forage-app .leaflet-control-attribution a {
+    color: #174e58;
+}
+
+.forage-app .leaflet-draw-toolbar a {
+    position: relative;
+    background-image: none !important;
+    filter: none;
+}
+
+.forage-app .leaflet-draw-toolbar a::before {
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    color: var(--fw-green);
+    font-size: 19px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.forage-app .leaflet-draw-draw-polygon::before {
+    content: "⬠";
+}
+
+.forage-app .leaflet-draw-draw-rectangle::before {
+    content: "□";
+    font-size: 24px;
+}
+
+.forage-app .leaflet-draw-edit-edit::before {
+    content: "✎";
+}
+
+.forage-app .leaflet-draw-edit-remove::before {
+    content: "⌫";
+}
+
+.forage-app .leaflet-draw-toolbar a.leaflet-disabled::before {
+    color: var(--fw-muted);
+}
+
+.forage-app .leaflet-draw-toolbar a:not(.leaflet-disabled):hover::before {
+    color: var(--fw-cyan);
+}
+
+.forage-app .leaflet-draw-actions a {
+    color: #f0f8f4;
+    background: #14251f;
+}
+
+.forage-app .leaflet-draw-tooltip {
+    border: 1px solid var(--fw-border-strong);
+    color: var(--fw-text);
+    background: #0b1713;
+}
+
+.forage-app .leaflet-draw-tooltip:before {
+    border-right-color: #0b1713;
+}
+
+@media (max-width: 1260px) {
+    .forage-workspace {
+        grid-template-columns: 300px minmax(470px, 1fr);
+        height: auto;
+    }
+
+    .forage-map-panel {
+        min-height: 740px;
+    }
+
+    .forage-sidebar-left,
+    .forage-sidebar-right {
+        overflow: visible;
+    }
+
+    .forage-sidebar-right {
+        display: grid;
+        grid-template-columns: 1.05fr 1fr 1fr;
+        grid-column: 1 / -1;
+        border-top: 1px solid var(--fw-border);
+        border-left: 0;
+    }
+
+    .forage-sidebar-right .forage-card {
+        border-right: 1px solid var(--fw-border);
+        border-bottom: 0;
+    }
+}
+
+@media (max-width: 900px) {
+    .forage-app {
+        padding-right: 8px;
+        padding-left: 8px;
+    }
+
+    .forage-appbar {
+        grid-template-columns: 1fr auto;
+    }
+
+    .forage-mode-switch {
+        grid-column: 1 / -1;
+        grid-row: 2;
+    }
+
+    .forage-local-badge {
+        display: none;
+    }
+
+    .forage-workspace {
+        grid-template-columns: 1fr;
+        height: auto;
+        max-height: none;
+    }
+
+    .forage-sidebar-left,
+    .forage-sidebar-right {
+        border: 0;
+        overflow: visible;
+    }
+
+    .forage-sidebar-left {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        border-bottom: 1px solid var(--fw-border);
+    }
+
+    .forage-sidebar-left .forage-card {
+        border-right: 1px solid var(--fw-border);
+        border-bottom: 0;
+    }
+
+    .forage-map-panel {
+        grid-row: 1;
+    }
+
+    .forage-map-wrap,
+    .forage-map {
+        min-height: 560px;
+    }
+
+    .forage-sidebar-right {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 720px) {
+    .forage-app {
+        padding-top: calc(var(--header-height) + 8px);
+    }
+
+    .forage-frame {
+        border-radius: 12px;
+    }
+
+    .forage-appbar {
+        gap: 9px;
+        padding: 10px;
+    }
+
+    .forage-appbar-actions .forage-button {
+        padding: 7px 9px;
+    }
+
+    .forage-product div {
+        display: grid;
+        gap: 0;
+    }
+
+    .forage-product span {
+        font-size: 9px;
+    }
+
+    .forage-product strong {
+        font-size: 16px;
+    }
+
+    .forage-sidebar-left,
+    .forage-sidebar-right {
+        display: block;
+    }
+
+    .forage-sidebar-left .forage-card,
+    .forage-sidebar-right .forage-card {
+        border-right: 0;
+        border-bottom: 1px solid var(--fw-border);
+    }
+
+    .forage-map-toolbar {
+        align-items: flex-start;
+    }
+
+    .forage-map-toolbar > div:first-child strong {
+        max-width: 180px;
+    }
+
+    .forage-map-actions {
+        align-items: center;
+    }
+
+    .forage-map-actions label {
+        display: none;
+    }
+
+    .forage-map-wrap,
+    .forage-map {
+        min-height: 500px;
+    }
+
+    .forage-layer-panel {
+        top: auto;
+        right: 8px;
+        bottom: 28px;
+        width: 180px;
+    }
+
+    .forage-map-prompt {
+        top: 42%;
+    }
+
+    .forage-map-status {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 2px;
+    }
+
+    .forage-dialog form {
+        padding: 22px;
+    }
+
+    .forage-dialog-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .forage-app *,
+    .forage-app *::before,
+    .forage-app *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+    }
+}

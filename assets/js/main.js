@@ -7,6 +7,17 @@ document.addEventListener('DOMContentLoaded', function() {
     const nav = document.querySelector('.nav');
     
     if (hamburger && nav) {
+        const syncNavAccessibility = function() {
+            if (window.matchMedia('(min-width: 992px)').matches) {
+                nav.setAttribute('aria-hidden', 'false');
+            } else if (!nav.classList.contains('active')) {
+                nav.setAttribute('aria-hidden', 'true');
+            }
+        };
+
+        syncNavAccessibility();
+        window.addEventListener('resize', syncNavAccessibility);
+
         hamburger.addEventListener('click', function() {
             hamburger.classList.toggle('active');
             nav.classList.toggle('active');
@@ -51,11 +62,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 faqItems.forEach(function(otherItem) {
                     if (otherItem !== item) {
                         otherItem.classList.remove('active');
+                        const otherQuestion = otherItem.querySelector('.faq-question');
+                        if (otherQuestion) otherQuestion.setAttribute('aria-expanded', 'false');
                     }
                 });
                 
                 // Toggle current item
                 item.classList.toggle('active');
+                question.setAttribute('aria-expanded', item.classList.contains('active') ? 'true' : 'false');
             });
         }
     });

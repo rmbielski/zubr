@@ -3,189 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Zubr Technologies resources: service overviews, sample outputs, and reference materials for rangeland mapping, forage analysis, and conservation program data products.">
-    <title>Resources - Zubr Technologies</title>
-    <link rel="stylesheet" href="assets/css/styles.css?v=003">
+    <meta name="description" content="ForageWatch product notes, layer definitions, supported inputs, and model-readiness information from Zubr Technologies.">
+    <title>ForageWatch Resources | Zubr Technologies</title>
+    <link rel="stylesheet" href="assets/css/styles.css?v=004">
     <link rel="icon" type="image/png" href="assets/images/image_logo_trans2.png">
 </head>
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
-
-    <!-- Header -->
     <header class="header">
         <div class="container">
-            <a href="index.html" class="logo">
-                <img src="assets/images/image_logo_trans2.png" alt="Zubr icon" class="logo-thumb">
-                <img src="assets/images/word_logo_trans.png" alt="Zubr Technologies logo" class="logo-wordmark">
-            </a>
-            <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <nav class="nav" aria-hidden="true">
-                <ul class="nav-list">
-                    <li><a href="index.html" class="nav-link">Home</a></li>
-                    <li><a href="services.html" class="nav-link">Services</a></li>
-                    <li><a href="technology.html" class="nav-link">Technology</a></li>
-                    <li><a href="use-cases.html" class="nav-link">Use Cases</a></li>
-                    <li><a href="pricing.html" class="nav-link">Pricing</a></li>
-                    <li><a href="about.html" class="nav-link">About</a></li>
-                    <li><a href="resources.html" class="nav-link">Resources</a></li>
-                    <li><a href="faq.html" class="nav-link">FAQ</a></li>
-                    <li><a href="contact.html" class="nav-link">Contact</a></li>
-                </ul>
-            </nav>
+            <a href="index.html" class="logo"><img src="assets/images/image_logo_trans2.png" alt="Zubr icon" class="logo-thumb"><img src="assets/images/word_logo_trans.png" alt="Zubr Technologies logo" class="logo-wordmark"></a>
+            <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false"><span></span><span></span><span></span></button>
+            <nav class="nav" aria-hidden="true"><ul class="nav-list"><li><a href="index.html" class="nav-link">Dashboard</a></li><li><a href="about.html" class="nav-link">About</a></li><li><a href="resources.html" class="nav-link">Resources</a></li><li><a href="faq.html" class="nav-link">FAQ</a></li><li><a href="contact.html" class="nav-link">Contact</a></li></ul></nav>
         </div>
     </header>
 
-    <!-- Main Content -->
     <main id="main-content">
-        <!-- Hero Section -->
-        <section class="hero">
-            <div class="container">
-                <div class="hero-grid">
-                    <div class="hero-copy">
-                        <div class="eyebrow">Resources</div>
-                        <h1>Service overviews, sample outputs, and reference materials</h1>
-                        <p class="subhead">Built for reviewers, program partners, and prospective clients.</p>
-                        <div class="hero-buttons">
-                            <a href="contact.html" class="btn btn-primary">Request resources</a>
-                            <a href="services.html" class="btn btn-secondary">Review our services</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <section class="hero hero-compact">
+            <div class="container"><div class="hero-grid"><div class="hero-copy">
+                <div class="eyebrow">Resources</div>
+                <h1>Product notes and layer definitions.</h1>
+                <p class="subhead">A concise reference for what ForageWatch does now, what each target layer means, and what is still being developed.</p>
+                <div class="hero-buttons"><a href="index.html" class="btn btn-primary">Open the dashboard</a><a href="faq.html" class="btn btn-secondary">Read the FAQ</a></div>
+            </div></div></div>
         </section>
 
-        <!-- Overview Section -->
         <section class="section">
             <div class="container">
-                <div class="resource-card">
-                    <h3>Service overview (multi-pillar platform)</h3>
-                    <p>Covers all four service areas with data types, delivery formats, and example use cases.</p>
-                    <ul style="margin-left: 1.5rem; margin-bottom: 1.5rem;">
-                        <li>Why spectroscopy and hyperspectral remote sensing outperform manual field surveys</li>
-                        <li>Platform capabilities from benchtop NIR to UAV to satellite</li>
-                        <li>Typical deliverables and program documentation formats</li>
-                    </ul>
-                    <a href="contact.html" class="btn btn-accent">Request the overview</a>
+                <div class="section-heading-left"><span class="section-label">Quick start</span><h2>Using the current dashboard</h2></div>
+                <div class="resource-grid">
+                    <article><span>01</span><h3>Define pastures</h3><p>Draw polygons on the map or upload a GeoJSON file. Each pasture can be named, edited, removed, and exported. Geometry remains in local browser storage.</p></article>
+                    <article><span>02</span><h3>Choose a data path</h3><p>Public mode represents satellite-supported reconnaissance. UAV mode stages the additional inputs needed for property-specific forage-quality work.</p></article>
+                    <article><span>03</span><h3>Set planning inputs</h3><p>Enter animal class, head count, average weight, grazing days, and allowable use to calculate planned herd demand in animal unit months.</p></article>
+                    <article><span>04</span><h3>Request an estimate</h3><p>The interface validates project inputs and then stops at model inference. This is expected until validated prediction services are connected.</p></article>
                 </div>
             </div>
         </section>
 
-        <!-- Sample Outputs Section -->
         <section class="section section-light">
             <div class="container">
-                <div class="section-title">
-                    <h2>Sample outputs</h2>
-                    <p>Deliverables are designed for clear decisions and documentation.</p>
-                </div>
-
-                <div class="resource-card">
-                    <h3>Forage Intelligence Report</h3>
-                    <p>Each forage analysis engagement includes:</p>
-                    <ul style="margin-left: 1.5rem; margin-bottom: 1.5rem;">
-                        <li>Forage quality by pasture (crude protein, fiber/NDF, silica)</li>
-                        <li>Biomass and available grazing-days / AUMs</li>
-                        <li>Nutritional-risk classes and invasive annual grass load</li>
-                    </ul>
-                    <!-- SWAP: replace with a real sample-report screenshot when available -->
-                    <div class="placeholder-image">
-                        [Sample Forage Intelligence Report, available on request]
-                    </div>
-                </div>
-
-                <div class="resource-card">
-                    <h3>Mapping and Analysis Report</h3>
-                    <p>Remote sensing deliverables include:</p>
-                    <ul style="margin-left: 1.5rem; margin-bottom: 1.5rem;">
-                        <li>Invasive species distribution maps (GIS-compatible)</li>
-                        <li>Change detection summaries across time periods</li>
-                        <li>Confidence scores and known classification limits</li>
-                    </ul>
-                    <div class="placeholder-image">
-                        [Sample Mapping and Analysis Report, available on request]
-                    </div>
+                <div class="section-heading-left"><span class="section-label">Target layers</span><h2>What the planned measurements represent</h2><p>Units and reporting conventions will be finalized with each model’s validation protocol.</p></div>
+                <div class="definition-list">
+                    <article><div><h3>Biomass</h3><span>Forage quantity</span></div><p>Estimated aboveground dry matter over a defined observation period. The initial product path is intended to use public satellite imagery, with UAV data available for higher-resolution projects.</p></article>
+                    <article><div><h3>Crude protein / nitrogen</h3><span>Forage quality</span></div><p>A laboratory-calibrated estimate related to plant nitrogen concentration and nutritional value. Planned for the private UAV workflow.</p></article>
+                    <article><div><h3>NDF</h3><span>Forage quality</span></div><p>Neutral detergent fiber, a measure of structural plant material associated with intake and digestibility. Planned for the private UAV workflow.</p></article>
+                    <article><div><h3>Silica</h3><span>Forage quality</span></div><p>Plant silica concentration, included because it can affect palatability and forage value and is central to the initial ventenata research.</p></article>
+                    <article><div><h3><em>Ventenata dubia</em></h3><span>Bio-Invaders</span></div><p>Occurrence or probability of the invasive annual grass ventenata. Final output type, resolution, and detection threshold will depend on validation results.</p></article>
                 </div>
             </div>
         </section>
 
-        <!-- Calibration Section -->
         <section class="section">
-            <div class="container">
-                <div class="section-title">
-                    <h2>Custom calibration and model requests</h2>
-                    <p>We build new calibrations for any plant target at client request.</p>
-                </div>
-                <div class="cards-grid">
-                    <div class="card">
-                        <h3>Sampling plan</h3>
-                        <p>Define target species, medium, and field conditions.</p>
-                    </div>
-                    <div class="card">
-                        <h3>Data collection</h3>
-                        <p>Build a labeled dataset with adequate variability.</p>
-                    </div>
-                    <div class="card">
-                        <h3>Validation</h3>
-                        <p>Verify performance for the requested use case.</p>
-                    </div>
-                </div>
+            <div class="container status-layout">
+                <div><span class="section-label">Data and limitations</span><h2>Every map layer needs context.</h2><p>ForageWatch is designed to retain the information needed to interpret a result, not just render a colored surface.</p></div>
+                <dl class="status-list">
+                    <div><dt>Source</dt><dd>Sensor or collection, acquisition date, spatial resolution, preprocessing, and pasture coverage.</dd></div>
+                    <div><dt>Model</dt><dd>Target definition, version, training domain, validation data, and known limits.</dd></div>
+                    <div><dt>Confidence</dt><dd>Uncertainty or quality flags that indicate where a result should not be treated as decision-ready.</dd></div>
+                    <div><dt>Privacy</dt><dd>Public satellite workflows and private property-specific UAV data follow different access paths.</dd></div>
+                </dl>
             </div>
         </section>
 
-        <!-- CTA Section -->
-        <section class="section section-light">
-            <div class="container text-center">
-                <h2>Need materials for a proposal, program application, or pilot?</h2>
-                <p>Tell us your program or project context and we will share the right materials.</p>
-                <a href="contact.html" class="btn btn-accent" style="margin-top: 1rem;">Get in touch</a>
-            </div>
-        </section>
+        <section class="section closing-cta"><div class="container"><div><span class="section-label">Technical questions</span><h2>Need a specific data format or validation approach?</h2></div><div><p>Tell us about the acreage, target measurement, available field data, and decision the output needs to support.</p><a href="contact.html" class="btn btn-primary">Contact Zubr</a></div></div></section>
     </main>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>Zubr Technologies</h4>
-                    <p>Environmental technology and data services for rangelands and conservation programs.</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Services</h4>
-                    <ul class="footer-links">
-                        <li><a href="services.html">Forage Intelligence Report</a></li>
-                        <li><a href="services.html">Treatment ROI Monitoring</a></li>
-                        <li><a href="services.html">Conservation Documentation</a></li>
-                        <li><a href="services.html">Advisor &amp; Cooperative Platform</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Company</h4>
-                    <ul class="footer-links">
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="technology.html">Technology</a></li>
-                        <li><a href="resources.html">Resources</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Connect</h4>
-                    <div class="social-links">
-                        <a href="#" aria-label="LinkedIn">LinkedIn</a>
-                        <a href="#" aria-label="Twitter">Twitter</a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; <span class="current-year">2025</span> Zubr Technologies. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-
+    <footer class="footer"><div class="container"><div class="footer-content"><div class="footer-section"><h4>Zubr Technologies</h4><p>Rangeland intelligence for pasture measurement, forage quality, and grazing decisions.</p></div><div class="footer-section"><h4>Product</h4><ul class="footer-links"><li><a href="index.html">ForageWatch dashboard</a></li><li><a href="about.html#product">Product overview</a></li><li><a href="about.html#method">Measurement method</a></li></ul></div><div class="footer-section"><h4>Company</h4><ul class="footer-links"><li><a href="about.html">About</a></li><li><a href="resources.html">Resources</a></li><li><a href="faq.html">FAQ</a></li><li><a href="contact.html">Contact</a></li></ul></div></div><div class="footer-bottom"><p>&copy; <span class="current-year">2026</span> Zubr Technologies. All rights reserved.</p></div></div></footer>
     <script src="assets/js/main.js"></script>
-    <!-- Maintenance update: routine refresh -->
 </body>
 </html>

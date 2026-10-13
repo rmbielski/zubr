@@ -3,9 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Zubr Technologies gives western US land managers tools to generate grazing, forage quality, and nutrient application reports from hyperspectral remote sensing. Based in Missoula, Montana.">
-    <title>Zubr Technologies | Rangeland Intelligence for the Western US</title>
-    <link rel="stylesheet" href="assets/css/styles.css?v=003">
+    <meta name="description" content="ForageWatch by Zubr Technologies is an in-development rangeland intelligence workspace for pasture mapping, forage measurement, and grazing planning.">
+    <title>ForageWatch | Rangeland Intelligence by Zubr</title>
+    <link rel="stylesheet" href="assets/css/styles.css?v=004">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css">
+    <link rel="stylesheet" href="assets/css/stocking-dashboard.css?v=002">
     <link rel="icon" type="image/png" href="assets/images/image_logo_trans2.png">
 </head>
 <body>
@@ -25,11 +28,7 @@
             </button>
             <nav class="nav" aria-hidden="true">
                 <ul class="nav-list">
-                    <li><a href="index.html" class="nav-link">Home</a></li>
-                    <li><a href="services.html" class="nav-link">Services</a></li>
-                    <li><a href="technology.html" class="nav-link">Technology</a></li>
-                    <li><a href="use-cases.html" class="nav-link">Use Cases</a></li>
-                    <li><a href="pricing.html" class="nav-link">Pricing</a></li>
+                    <li><a href="index.html" class="nav-link">Dashboard</a></li>
                     <li><a href="about.html" class="nav-link">About</a></li>
                     <li><a href="resources.html" class="nav-link">Resources</a></li>
                     <li><a href="faq.html" class="nav-link">FAQ</a></li>
@@ -41,161 +40,292 @@
 
     <!-- Main Content -->
     <main id="main-content">
-        <!-- Hero Section -->
-        <!-- Split hero: value proposition on the left, product dashboard mockup on the right.
-             Uses .hero-grid-split (see styles.css) so it goes two-column on desktop. -->
-        <section class="hero">
+        <!-- ForageWatch is a real client-side geospatial workspace. Prediction
+             services are deliberately unavailable until validated models exist. -->
+        <section class="forage-app" data-forage-app aria-label="ForageWatch geospatial dashboard">
+            <div class="forage-frame">
+                <header class="forage-appbar">
+                    <div class="forage-product">
+                        <img src="assets/images/image_logo_trans2.png" alt="" width="38" height="38">
+                        <div><span>Zubr</span><strong>ForageWatch</strong></div>
+                    </div>
+                    <div class="forage-mode-switch" role="group" aria-label="Analysis workspace">
+                        <button type="button" class="is-active" data-mode="public" aria-pressed="true">Public satellite</button>
+                        <button type="button" data-mode="uav" aria-pressed="false">UAV detail</button>
+                    </div>
+                    <div class="forage-appbar-actions">
+                        <span class="forage-local-badge"><i></i> Saved in this browser</span>
+                        <button type="button" class="forage-button forage-button-quiet" data-open-private>Private workspace</button>
+                    </div>
+                </header>
+
+                <div class="forage-workspace">
+                    <aside class="forage-sidebar forage-sidebar-left" aria-label="Project and analysis inputs">
+                        <section class="forage-card">
+                            <div class="forage-card-title"><span>01</span><h1>Pastures</h1></div>
+                            <label class="forage-field">Project name
+                                <input type="text" value="Untitled forage project" maxlength="80" data-project-name>
+                            </label>
+                            <div class="forage-boundary-stats">
+                                <div><strong data-acre-count>0</strong><span>acres</span></div>
+                                <div><strong data-feature-count>0</strong><span>pastures</span></div>
+                            </div>
+                            <div class="forage-pasture-list" data-pasture-list hidden></div>
+                            <div class="forage-action-grid">
+                                <button type="button" class="forage-button" data-draw-boundary>Draw pasture</button>
+                                <button type="button" class="forage-button forage-button-quiet" data-upload-boundary>Upload GeoJSON</button>
+                                <button type="button" class="forage-button forage-button-quiet" data-export-boundary disabled>Export</button>
+                                <button type="button" class="forage-button forage-button-danger" data-clear-boundary disabled>Clear</button>
+                            </div>
+                            <input type="file" accept=".geojson,.json,application/geo+json,application/json" data-boundary-file hidden>
+                            <p class="forage-help">Add as many pasture polygons as needed. Names and geometry stay on this device.</p>
+                        </section>
+
+                        <section class="forage-card">
+                            <div class="forage-card-title"><span>02</span><h2>Observation source</h2></div>
+                            <div data-public-source>
+                                <label class="forage-field">Satellite collection
+                                    <select data-source>
+                                        <option value="hls">HLS · Landsat + Sentinel-2</option>
+                                        <option value="sentinel-2">Sentinel-2 L2A</option>
+                                        <option value="landsat">Landsat 8–9 Collection 2</option>
+                                    </select>
+                                </label>
+                                <div class="forage-source-policy">
+                                    <div><span>Acquisition</span><b>Automatic</b></div>
+                                    <strong>Latest viable composite</strong>
+                                    <p>Uses the newest clear observations that pass coverage and quality checks. Historical windows will live in a separate comparison workflow.</p>
+                                </div>
+                            </div>
+                            <div class="forage-uav-source" data-uav-source hidden>
+                                <label class="forage-field">Field season
+                                    <select data-field-season>
+                                        <option value="greenup">Green-up</option>
+                                        <option value="peak" selected>Peak biomass</option>
+                                        <option value="senescence">Senescence</option>
+                                    </select>
+                                </label>
+                                <button type="button" class="forage-dropzone" data-upload-uav>
+                                    <strong>Stage UAV capture</strong>
+                                    <span>GeoTIFF, LAS/LAZ, or ZIP · file metadata only</span>
+                                </button>
+                                <input type="file" accept=".tif,.tiff,.las,.laz,.zip" data-uav-file hidden>
+                                <div class="forage-file-status" data-uav-file-status hidden><strong data-uav-file-name></strong><span data-uav-file-meta></span></div>
+                            </div>
+                        </section>
+
+                        <section class="forage-card">
+                            <div class="forage-card-title"><span>03</span><h2>Target layers</h2></div>
+                            <div class="forage-metric-group">
+                                <div class="forage-metric-group-title"><span>Forage quantity &amp; quality</span><b>4 metrics</b></div>
+                                <div class="forage-metric-list">
+                                    <label><input type="checkbox" value="biomass" data-metric checked><span><strong>Biomass</strong><small>Satellite or UAV</small></span><b>kg/ha</b></label>
+                                    <label data-uav-metric><input type="checkbox" value="protein" data-metric disabled><span><strong>Crude protein / N</strong><small>UAV hyperspectral</small></span><b>% DM</b></label>
+                                    <label data-uav-metric><input type="checkbox" value="ndf" data-metric disabled><span><strong>NDF</strong><small>UAV hyperspectral</small></span><b>% DM</b></label>
+                                    <label data-uav-metric><input type="checkbox" value="silica" data-metric disabled><span><strong>Silica</strong><small>UAV hyperspectral</small></span><b>% DM</b></label>
+                                </div>
+                            </div>
+                            <div class="forage-metric-group forage-metric-group-invasive">
+                                <div class="forage-metric-group-title"><span>Bio-Invaders</span><b>1 species</b></div>
+                                <div class="forage-metric-list">
+                                    <label><input type="checkbox" value="ventenata" data-metric><span><strong><em>Ventenata dubia</em></strong><small>Satellite or UAV detection</small></span><b>class</b></label>
+                                </div>
+                            </div>
+                            <p class="forage-help">Every future result will include model version and uncertainty. No placeholder values are generated.</p>
+                            <button type="button" class="forage-run-button" data-run-estimate>Run estimate <span>→</span></button>
+                        </section>
+
+                        <section class="forage-card">
+                            <div class="forage-card-title"><span>04</span><h2>Animal details</h2></div>
+                            <div class="forage-herd-grid">
+                                <label class="forage-field forage-field-wide">Animal class
+                                    <select data-animal-type>
+                                        <option value="cow">Mature cow</option>
+                                        <option value="pair">Cow–calf pair</option>
+                                        <option value="yearling">Yearling</option>
+                                        <option value="sheep">Sheep</option>
+                                        <option value="horse">Horse</option>
+                                    </select>
+                                </label>
+                                <label class="forage-field">Head count<input type="number" min="1" max="10000" step="1" value="100" data-animal-count></label>
+                                <label class="forage-field">Avg. weight (lb)<input type="number" min="50" max="3000" step="25" value="1200" data-animal-weight></label>
+                                <label class="forage-field forage-field-wide">Planned grazing period<input type="number" min="1" max="365" step="1" value="30" data-grazing-days></label>
+                            </div>
+                            <label class="forage-range"><span>Allowable forage use <output data-allowable-use-output>25%</output></span><input type="range" min="10" max="50" step="1" value="25" data-allowable-use></label>
+                            <div class="forage-demand-output">
+                                <span>Planned herd demand</span>
+                                <strong><b data-herd-aum>120.0</b> AUM</strong>
+                                <small>Weight-based planning estimate</small>
+                            </div>
+                            <p class="forage-help">Herd demand works now. Supported head count and grazing days will calculate when a calibrated biomass model is available.</p>
+                        </section>
+                    </aside>
+
+                    <section class="forage-map-panel" aria-label="Interactive project map">
+                        <div class="forage-map-toolbar">
+                            <div><span>Map workspace</span><strong data-map-heading>Define an analysis area</strong></div>
+                            <div class="forage-map-actions">
+                                <label>Basemap
+                                    <select data-basemap>
+                                        <option value="imagery">Satellite</option>
+                                        <option value="streets">Streets</option>
+                                    </select>
+                                </label>
+                                <button type="button" class="forage-icon-button" data-locate aria-label="Zoom to my location">Locate me</button>
+                            </div>
+                        </div>
+                        <div class="forage-map-wrap">
+                            <div id="foragewatch-map" class="forage-map" role="application" aria-label="Map for drawing and editing project boundaries"></div>
+                            <div class="forage-map-prompt" data-map-prompt>
+                                <span>Start here</span>
+                                <strong>Draw or upload pasture boundaries</strong>
+                                <p>The map will calculate its true geodesic area.</p>
+                                <button type="button" class="forage-button" data-map-draw>Draw on map</button>
+                            </div>
+                            <div class="forage-map-error" data-map-error hidden>
+                                <strong>The interactive map could not load.</strong>
+                                <span>Check the network connection and reload this page.</span>
+                            </div>
+                            <aside class="forage-layer-panel" data-layer-panel aria-label="Analysis layers">
+                                <button type="button" class="forage-layer-heading" data-toggle-layer-panel aria-expanded="true" aria-controls="forage-layer-panel-body">
+                                    <span>Layers</span><b><span data-layer-toggle-label>Hide</span><i aria-hidden="true">⌃</i></b>
+                                </button>
+                                <div class="forage-layer-panel-body" id="forage-layer-panel-body" data-layer-panel-body>
+                                    <div class="forage-layer-group">
+                                        <div class="forage-layer-group-title"><span>Forage intelligence</span><b>4 layers</b></div>
+                                        <button type="button" class="forage-layer-option is-ready" data-layer="boundary"><i></i><span>Pasture boundaries</span><b data-boundary-layer-status>Empty</b></button>
+                                        <button type="button" class="forage-layer-option" data-layer="biomass"><i></i><span>Biomass</span><b>No model</b></button>
+                                        <button type="button" class="forage-layer-option" data-layer="protein"><i></i><span>Protein / N</span><b>No model</b></button>
+                                        <button type="button" class="forage-layer-option" data-layer="ndf"><i></i><span>NDF</span><b>No model</b></button>
+                                        <button type="button" class="forage-layer-option" data-layer="silica"><i></i><span>Silica</span><b>No model</b></button>
+                                    </div>
+                                    <div class="forage-layer-group forage-layer-group-invasive">
+                                        <div class="forage-layer-group-title"><span>Bio-Invaders</span><b>1 species</b></div>
+                                        <button type="button" class="forage-layer-option" data-layer="ventenata"><i></i><span><em>Ventenata dubia</em></span><b>No model</b></button>
+                                    </div>
+                                    <div class="forage-layer-note"><i></i><span>Uncertainty will accompany every modeled layer.</span></div>
+                                </div>
+                            </aside>
+                        </div>
+                        <div class="forage-map-status">
+                            <span><i class="is-live"></i><b data-basemap-status>Satellite basemap</b></span>
+                            <span><b data-map-area>0 acres</b> mapped locally</span>
+                        </div>
+                    </section>
+
+                    <aside class="forage-sidebar forage-sidebar-right" aria-label="Analysis status">
+                        <section class="forage-card forage-status-card" data-analysis-status="idle">
+                            <div class="forage-card-title"><span>Run</span><h2>Analysis status</h2></div>
+                            <div class="forage-status-head">
+                                <i></i>
+                                <div><strong data-status-title>Ready for inputs</strong><span data-status-time>No analysis has run</span></div>
+                            </div>
+                            <p data-status-message>Add one or more pastures, choose a target layer, then run the estimate.</p>
+                            <ol class="forage-pipeline">
+                                <li data-stage="boundary"><i>1</i><span>Pasture validation</span><b>Waiting</b></li>
+                                <li data-stage="source"><i>2</i><span>Source validation</span><b>Waiting</b></li>
+                                <li data-stage="model"><i>3</i><span>Model inference</span><b>Unavailable</b></li>
+                                <li data-stage="publish"><i>4</i><span>Layer publication</span><b>Waiting</b></li>
+                            </ol>
+                        </section>
+
+                        <section class="forage-card">
+                            <div class="forage-card-title"><span>Access</span><h2>What works now</h2></div>
+                            <ul class="forage-readiness-list">
+                                <li><i></i><span>Live street and satellite basemaps</span></li>
+                                <li><i></i><span>Draw, edit, import, and export boundaries</span></li>
+                                <li><i></i><span>Project settings saved locally</span></li>
+                                <li class="is-pending"><i></i><span>Satellite and chemometric prediction services</span></li>
+                                <li class="is-pending"><i></i><span>Secure accounts and cloud projects</span></li>
+                            </ul>
+                        </section>
+
+                        <section class="forage-card forage-access-card">
+                            <span class="forage-kicker">Two data paths</span>
+                            <h2>Open reconnaissance. Private field intelligence.</h2>
+                            <p>Public mode prepares satellite biomass requests. UAV mode stages high-resolution inputs for biomass, protein/N, NDF, and silica.</p>
+                            <button type="button" class="forage-text-button" data-open-private>See private workspace plan →</button>
+                        </section>
+                    </aside>
+                </div>
+            </div>
+
+            <dialog class="forage-dialog" data-private-dialog aria-labelledby="private-workspace-title">
+                <form method="dialog">
+                    <button class="forage-dialog-close" value="close" aria-label="Close dialog">×</button>
+                    <span class="forage-kicker">Private workspace</span>
+                    <h2 id="private-workspace-title">The access boundary is designed, not connected.</h2>
+                    <p>Accounts will protect UAV captures, field samples, calibration data, and organization projects. Authentication and cloud storage are not configured in this static website yet, so this button does not imitate a login.</p>
+                    <div class="forage-dialog-grid">
+                        <div><b>Public</b><span>Boundaries, satellite source settings, biomass request setup</span></div>
+                        <div><b>Authenticated</b><span>UAV data, land history, chemistry layers, reports, team access</span></div>
+                    </div>
+                    <button class="forage-button" value="close">Understood</button>
+                </form>
+            </dialog>
+            <div class="forage-toast" data-toast role="status" aria-live="polite" hidden></div>
+        </section>
+
+        <section class="section product-summary" aria-labelledby="product-summary-title">
             <div class="container">
-                <div class="hero-grid hero-grid-split">
-                    <div class="hero-copy">
-                        <div class="eyebrow">Zubr Technologies</div>
-                        <h1>Tools for land managers to generate grazing, forage quality, and nutrient application reports.</h1>
-                        <p class="subhead">Built for ranchers, farmers, and land managers across the western United States, Zubr turns hyperspectral remote sensing and field calibrated lab chemistry into forage quality maps and decision reports. We are based in Missoula, Montana.</p>
-                        <div class="hero-buttons">
-                            <a href="contact.html" class="btn btn-primary">Talk to us about your rangeland</a>
-                            <a href="services.html" class="btn btn-secondary">Explore our services</a>
+                <div class="product-summary-grid">
+                    <div class="product-summary-copy">
+                        <span class="section-label">ForageWatch</span>
+                        <h2 id="product-summary-title">Pasture data, forage measurements, and herd demand in one workspace.</h2>
+                        <p>ForageWatch is Zubr’s rangeland intelligence product. It is being built to combine public satellite observations with private UAV and field data, then turn those inputs into pasture-level estimates that can be reviewed and exported.</p>
+                        <p>The workspace above is the current product prototype—not a screenshot. Mapping, pasture management, data staging, and herd-demand calculations work now. Production prediction models are not connected yet.</p>
+                        <a href="about.html" class="text-link">Read about the product and method <span aria-hidden="true">→</span></a>
+                    </div>
+                    <div class="readiness-panel" aria-label="Product readiness">
+                        <div class="readiness-row">
+                            <span>Available now</span>
+                            <strong>Geospatial project setup</strong>
+                            <p>Live basemaps, multiple pasture boundaries, local project state, GeoJSON import and export, and AUM demand.</p>
+                        </div>
+                        <div class="readiness-row">
+                            <span>In validation</span>
+                            <strong>Remote-sensing models</strong>
+                            <p>Biomass, crude protein/N, NDF, silica, and <em>Ventenata dubia</em> layers require calibrated models before release.</p>
+                        </div>
+                        <div class="readiness-row">
+                            <span>Planned</span>
+                            <strong>Private field workspace</strong>
+                            <p>Accounts, cloud projects, UAV uploads, longitudinal comparisons, and shareable reports.</p>
                         </div>
                     </div>
-                    <!-- Hero visual: placeholder for the RangelandAI-style decision dashboard.
-                         SWAP: replace this whole .media-placeholder block with
-                         <div class="hero-image-frame"><img src="assets/images/hero-dashboard.png" alt="..."></div> -->
-                    <div class="hero-visual">
-                        <div class="media-placeholder media-hero">
-                            <span class="media-placeholder-icon" aria-hidden="true">🛰️</span>
-                            <span class="media-placeholder-label">Image placeholder</span>
-                            <p class="media-placeholder-note">Rangeland decision dashboard: forage-quality heat map with crude protein, silica, biomass, and available AUMs by pasture.</p>
-                        </div>
-                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- What We Do — four productized service lines (per the STTR plan).
-             Replaces the old capability pillars + retired handheld-scanner card. -->
-        <section class="section">
+        <section class="section section-light" aria-labelledby="method-title">
             <div class="container">
-                <div class="section-title">
-                    <h2>What we deliver</h2>
-                    <p>Four service lines share one engine and one growing calibration dataset, so every new customer strengthens the asset that serves the rest.</p>
+                <div class="section-heading-left">
+                    <span class="section-label">Measurement workflow</span>
+                    <h2 id="method-title">A traceable path from field samples to management estimates.</h2>
+                    <p>The product is designed around model provenance, validation, and explicit uncertainty—not anonymous map layers.</p>
                 </div>
-                <div class="four-col">
-                    <div class="benefit-card">
-                        <h3>Forage Intelligence Report</h3>
-                        <p>Seasonal or one-time assessment of forage quantity, quality, and grazing capacity for a ranch, allotment, or treatment area.</p>
-                    </div>
-                    <div class="benefit-card">
-                        <h3>Treatment ROI Monitoring</h3>
-                        <p>Before-and-after measurement of vegetation response and recovered forage value from weed control or restoration work.</p>
-                    </div>
-                    <div class="benefit-card">
-                        <h3>Conservation Documentation</h3>
-                        <p>Program-ready baselines and before/after monitoring for NRCS-style conservation and Defend the Core work.</p>
-                    </div>
-                    <div class="benefit-card">
-                        <h3>Advisor &amp; Cooperative Platform</h3>
-                        <p>Multi-property monitoring with standardized, white-label reporting, plus dashboard access over time.</p>
-                    </div>
+                <div class="method-grid">
+                    <article><span>01</span><h3>Reference data</h3><p>Field samples and laboratory chemistry establish the values used to train and test each target model.</p></article>
+                    <article><span>02</span><h3>Remote sensing</h3><p>UAV hyperspectral and lidar data connect plot measurements to canopy-scale patterns; satellites provide broader repeat coverage.</p></article>
+                    <article><span>03</span><h3>Validation</h3><p>Models are evaluated against held-out field observations before a layer is made available in the product.</p></article>
+                    <article><span>04</span><h3>Decision support</h3><p>Validated layers can support pasture comparisons, grazing planning, monitoring, and documented field decisions.</p></article>
                 </div>
             </div>
         </section>
 
-        <!-- How It Works — the field-to-decision pipeline.
-             Inspired by pasture.io / farmote.com "how it works" flows. -->
-        <section class="section section-light">
+        <section class="section company-note">
             <div class="container">
-                <div class="section-title">
-                    <h2>How it works</h2>
-                    <p>A field-validated bridge from imagery to forage decisions.</p>
+                <div>
+                    <span class="section-label">Zubr Technologies</span>
+                    <h2>Rangeland measurement built in Montana.</h2>
                 </div>
-                <div class="pipeline">
-                    <div class="pipeline-step">
-                        <h3>Calibrate</h3>
-                        <p>Field crews collect grass samples; lab chemistry (silica, nitrogen, fiber) anchors our spectral calibration library.</p>
-                    </div>
-                    <div class="pipeline-step">
-                        <h3>Fly</h3>
-                        <p>Hyperspectral and lidar UAV surveys scale those signals from the bench to the canopy across your acres.</p>
-                    </div>
-                    <div class="pipeline-step">
-                        <h3>Model</h3>
-                        <p>Interpretable, uncertainty-aware models predict forage quality and biomass, and flag low-confidence pixels.</p>
-                    </div>
-                    <div class="pipeline-step">
-                        <h3>Decide</h3>
-                        <p>Maps become grazing-days, AUMs, nutritional-risk classes, and treatment-priority scores you can act on.</p>
+                <div>
+                    <p>Zubr is developing ForageWatch with a focus on western working lands, forage quality, and invasive annual grasses. We are currently building the calibration data and model infrastructure required for production estimates.</p>
+                    <div class="inline-actions">
+                        <a href="about.html" class="btn btn-secondary">About Zubr</a>
+                        <a href="contact.html" class="btn btn-primary">Discuss a pilot</a>
                     </div>
                 </div>
-                <!-- Optional supporting visual for the pipeline.
-                     SWAP: replace with a UAV/field-to-map process graphic. -->
-                <div class="media-placeholder" style="margin-top: var(--spacing-xl);">
-                    <span class="media-placeholder-icon" aria-hidden="true">🗺️</span>
-                    <span class="media-placeholder-label">Image placeholder</span>
-                    <p class="media-placeholder-note">Process graphic: field sampling → hyperspectral UAV flight → calibrated forage-quality map → decision report.</p>
-                </div>
-            </div>
-        </section>
-
-        <!-- Impact / stats band — figures drawn from the proposal's Broader Impacts. -->
-        <section class="section">
-            <div class="container">
-                <div class="stats-band">
-                    <div class="stat">
-                        <div class="stat-number">75–80%</div>
-                        <p class="stat-label">forage yield loss documented in ventenata-invaded rangeland</p>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-number">$190B</div>
-                        <p class="stat-label">estimated U.S. cost of plant invasions, the second costliest biological threat</p>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-number">450–2500&nbsp;nm</div>
-                        <p class="stat-label">spectral range we mine for silica, nitrogen, and fiber signatures</p>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-number">1&nbsp;pasture&nbsp;→&nbsp;millions&nbsp;of&nbsp;acres</div>
-                        <p class="stat-label">the range our calibrated models are built to scale across</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Who We Serve -->
-        <section class="section section-light">
-            <div class="container">
-                <div class="callout">
-                    <h3>Who we work with</h3>
-                    <p>We sell to the organizations that manage and document decisions across many properties: grazing advisors and range consultants, conservation and weed districts, NRCS-style technical service providers, restoration and herbicide firms, grazing cooperatives, and agency staff managing federal and state grazing lands.</p>
-                    <a href="contact.html" class="btn btn-accent">Tell us about your rangeland</a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Partners strip — research + engineering collaborators behind the venture. -->
-        <section class="section">
-            <div class="container">
-                <div class="section-title">
-                    <h2>Built with research and engineering partners</h2>
-                    <p>An NSF STTR team spanning field science, optical engineering, and rangeland ecology.</p>
-                </div>
-                <div class="partners-grid">
-                    <!-- SWAP each .partner-logo placeholder with the partner's actual logo <img>. -->
-                    <div class="partner-card">
-                        <div class="partner-logo">Logo</div>
-                        <h4>UM Spatial Analysis Lab</h4>
-                        <p>University of Montana, field calibration and validation</p>
-                    </div>
-                    <div class="partner-card">
-                        <div class="partner-logo">Logo</div>
-                        <h4>MSU Optical Technology Center</h4>
-                        <p>Montana State University, instrumentation and optical engineering</p>
-                    </div>
-                    <div class="partner-card">
-                        <div class="partner-logo">Logo</div>
-                        <h4>MT Headwaters Tech Hub</h4>
-                        <p>Commercialization &amp; test-bed access</p>
-                    </div>
-                </div>
-                <p class="text-center" style="margin-top: var(--spacing-lg);"><a href="about.html">Meet the team &amp; partners →</a></p>
             </div>
         </section>
     </main>
@@ -206,32 +336,24 @@
             <div class="footer-content">
                 <div class="footer-section">
                     <h4>Zubr Technologies</h4>
-                    <p>Environmental technology and data services for rangelands and conservation programs.</p>
+                    <p>Rangeland intelligence for pasture measurement, forage quality, and grazing decisions.</p>
                 </div>
                 <div class="footer-section">
-                    <h4>Services</h4>
+                    <h4>Product</h4>
                     <ul class="footer-links">
-                        <li><a href="services.html">Forage Intelligence Report</a></li>
-                        <li><a href="services.html">Treatment ROI Monitoring</a></li>
-                        <li><a href="services.html">Conservation Documentation</a></li>
-                        <li><a href="services.html">Advisor &amp; Cooperative Platform</a></li>
+                        <li><a href="index.html">ForageWatch dashboard</a></li>
+                        <li><a href="about.html#product">Product overview</a></li>
+                        <li><a href="about.html#method">Measurement method</a></li>
                     </ul>
                 </div>
                 <div class="footer-section">
                     <h4>Company</h4>
                     <ul class="footer-links">
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="technology.html">Technology</a></li>
+                        <li><a href="about.html">About</a></li>
                         <li><a href="resources.html">Resources</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Connect</h4>
-                    <div class="social-links">
-                        <a href="#" aria-label="LinkedIn">LinkedIn</a>
-                        <a href="#" aria-label="Twitter">Twitter</a>
-                    </div>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -241,6 +363,9 @@
     </footer>
 
     <script src="assets/js/main.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js"></script>
+    <script src="assets/js/stocking-dashboard.js?v=002"></script>
     <!-- Maintenance update: routine refresh -->
 </body>
 </html>

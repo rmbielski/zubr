@@ -3,227 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Zubr Technologies FAQ: answers about forage intelligence, treatment ROI, conservation documentation, EQIP and Defend the Core support, and how engagements work.">
-    <title>FAQ - Zubr Technologies</title>
-    <link rel="stylesheet" href="assets/css/styles.css?v=003">
+    <meta name="description" content="Answers about the ForageWatch dashboard, planned forage layers, UAV data, model status, data privacy, and pilot work.">
+    <title>ForageWatch FAQ | Zubr Technologies</title>
+    <link rel="stylesheet" href="assets/css/styles.css?v=004">
     <link rel="icon" type="image/png" href="assets/images/image_logo_trans2.png">
 </head>
 <body>
     <a href="#main-content" class="skip-link">Skip to main content</a>
+    <header class="header"><div class="container"><a href="index.html" class="logo"><img src="assets/images/image_logo_trans2.png" alt="Zubr icon" class="logo-thumb"><img src="assets/images/word_logo_trans.png" alt="Zubr Technologies logo" class="logo-wordmark"></a><button class="hamburger" aria-label="Toggle navigation" aria-expanded="false"><span></span><span></span><span></span></button><nav class="nav" aria-hidden="true"><ul class="nav-list"><li><a href="index.html" class="nav-link">Dashboard</a></li><li><a href="about.html" class="nav-link">About</a></li><li><a href="resources.html" class="nav-link">Resources</a></li><li><a href="faq.html" class="nav-link">FAQ</a></li><li><a href="contact.html" class="nav-link">Contact</a></li></ul></nav></div></header>
 
-    <!-- Header -->
-    <header class="header">
-        <div class="container">
-            <a href="index.html" class="logo">
-                <img src="assets/images/image_logo_trans2.png" alt="Zubr icon" class="logo-thumb">
-                <img src="assets/images/word_logo_trans.png" alt="Zubr Technologies logo" class="logo-wordmark">
-            </a>
-            <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <nav class="nav" aria-hidden="true">
-                <ul class="nav-list">
-                    <li><a href="index.html" class="nav-link">Home</a></li>
-                    <li><a href="services.html" class="nav-link">Services</a></li>
-                    <li><a href="technology.html" class="nav-link">Technology</a></li>
-                    <li><a href="use-cases.html" class="nav-link">Use Cases</a></li>
-                    <li><a href="pricing.html" class="nav-link">Pricing</a></li>
-                    <li><a href="about.html" class="nav-link">About</a></li>
-                    <li><a href="resources.html" class="nav-link">Resources</a></li>
-                    <li><a href="faq.html" class="nav-link">FAQ</a></li>
-                    <li><a href="contact.html" class="nav-link">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-
-    <!-- Main Content -->
     <main id="main-content">
-        <!-- Hero Section -->
-        <section class="hero">
-            <div class="container">
-                <div class="hero-grid">
-                    <div class="hero-copy">
-                        <div class="eyebrow">FAQ</div>
-                        <h1>Frequently Asked Questions</h1>
-                        <p class="subhead">Answers about our services, programs, and how engagements work.</p>
-                        <div class="hero-buttons">
-                            <a href="contact.html" class="btn btn-primary">Ask a question</a>
-                            <a href="resources.html" class="btn btn-secondary">View resources</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <section class="hero hero-compact"><div class="container"><div class="hero-grid"><div class="hero-copy"><div class="eyebrow">FAQ</div><h1>Direct answers about the product.</h1><p class="subhead">What works today, what is still in development, and how Zubr intends to handle field data and model results.</p><div class="hero-buttons"><a href="index.html" class="btn btn-primary">Try the dashboard</a><a href="contact.html" class="btn btn-secondary">Ask a question</a></div></div></div></div></section>
 
-        <!-- FAQ Section -->
-        <section class="section">
-            <div class="container">
-                <div class="faq-list">
-                    <div class="faq-item">
-                        <button class="faq-question" aria-expanded="false">
-                            What services does Zubr offer?
-                        </button>
-                        <div class="faq-answer">
-                            <p>We offer four service lines: the Forage Intelligence Report, Treatment ROI Monitoring, the Conservation Documentation Package, and the Advisor &amp; Cooperative Platform. They share one engine and one growing calibration dataset. See the <a href="services.html">Services page</a> for full descriptions.</p>
-                        </div>
-                    </div>
+        <section class="section"><div class="container"><div class="faq-list">
+            <div class="faq-item"><button class="faq-question" aria-expanded="false">What can I do in ForageWatch today?</button><div class="faq-answer"><p>You can use live street or satellite basemaps; draw, edit, name, import, and export multiple pasture boundaries; save project state locally in the browser; enter herd details; and calculate planned demand in animal unit months. The interface also validates the inputs needed for a future remote-sensing request.</p></div></div>
+            <div class="faq-item"><button class="faq-question" aria-expanded="false">Does the dashboard generate biomass or forage-quality predictions?</button><div class="faq-answer"><p>Not yet. The prediction pipeline intentionally stops with a “no validated model available” status. Zubr is developing the calibration data, validation protocols, and processing services required before model outputs can be treated as usable measurements.</p></div></div>
+            <div class="faq-item"><button class="faq-question" aria-expanded="false">Which layers are planned?</button><div class="faq-answer"><p>The current product plan includes biomass, crude protein/nitrogen, neutral detergent fiber (NDF), silica, and invasive-plant occurrence beginning with <em>Ventenata dubia</em>. The final availability, resolution, and units of each layer will depend on validation results.</p></div></div>
+            <div class="faq-item"><button class="faq-question" aria-expanded="false">Why are there separate satellite and UAV modes?</button><div class="faq-answer"><p>Public satellite imagery supports repeat coverage over large areas and is a practical path for compatible measurements such as biomass. UAV hyperspectral and lidar data can capture finer, property-specific information needed for detailed forage-quality work. UAV data also needs a private account and storage model that the current static prototype does not yet provide.</p></div></div>
+            <div class="faq-item"><button class="faq-question" aria-expanded="false">Why does the product choose imagery automatically?</button><div class="faq-answer"><p>For the primary current-condition workflow, the system is intended to select the newest observations that pass coverage and quality checks. Historical date ranges are more useful for a dedicated comparison workflow and are not part of the current prototype.</p></div></div>
+            <div class="faq-item"><button class="faq-question" aria-expanded="false">How is herd demand calculated?</button><div class="faq-answer"><p>The current AUM figure is a planning calculation based on animal class, head count, average body weight, and planned grazing days. It is not a stocking recommendation. A supported-head-count estimate will require a validated biomass layer plus management assumptions such as allowable use.</p></div></div>
+            <div class="faq-item"><button class="faq-question" aria-expanded="false">Where is my project data stored?</button><div class="faq-answer"><p>In the current prototype, pasture geometry and settings are stored only in the local browser. They are not uploaded to Zubr. Clearing browser storage can remove them, so export important boundaries as GeoJSON. Cloud projects and organization accounts are planned but not connected.</p></div></div>
+            <div class="faq-item"><button class="faq-question" aria-expanded="false">Will model results include uncertainty?</button><div class="faq-answer"><p>That is a product requirement. Production layers are intended to carry the source imagery, model version, acquisition date, and confidence or quality information needed to interpret the estimate. The exact reporting method will be set during model validation.</p></div></div>
+            <div class="faq-item"><button class="faq-question" aria-expanded="false">Can I work with Zubr on a pilot?</button><div class="faq-answer"><p>Zubr is interested in field sites and collaborators with pasture boundaries, vegetation or forage observations, laboratory measurements, UAV data, or a well-defined management question. A pilot would begin by reviewing the target, available reference data, geography, timing, and validation requirements.</p></div></div>
+            <div class="faq-item"><button class="faq-question" aria-expanded="false">Is ForageWatch a finished commercial service?</button><div class="faq-answer"><p>No. It is an active product and research effort. The geospatial workspace is functional, but production models, authentication, cloud processing, formal service levels, and payment are not yet live. The website labels those boundaries so the prototype is not mistaken for a deployed prediction service.</p></div></div>
+        </div></div></section>
 
-                    <div class="faq-item">
-                        <button class="faq-question" aria-expanded="false">
-                            What is the USDA WLFW Defend the Core program and how does Zubr fit?
-                        </button>
-                        <div class="faq-answer">
-                            <p>Defend the Core is a Working Lands for Wildlife (WLFW) and USDA initiative focused on protecting intact sagebrush and grassland from invasive annual grass encroachment. Zubr provides the mapping and documentation that supports clients participating in these programs, including core rangeland delineation, invasive encroachment monitoring, and vulnerability assessments. We are a data and analysis service provider supporting program participants, not a program operator.</p>
-                        </div>
-                    </div>
-
-                    <div class="faq-item">
-                        <button class="faq-question" aria-expanded="false">
-                            What is NRCS EQIP and how does Zubr help?
-                        </button>
-                        <div class="faq-answer">
-                            <p>The NRCS Environmental Quality Incentives Program (EQIP) provides cost-share funding for conservation practices on agricultural and rangeland. Zubr provides baseline invasive species assessments, monitoring and evaluation reports, and documentation that support EQIP applications and practice verification. If you are working through an EQIP application, we can help with the data and reporting side of the process.</p>
-                        </div>
-                    </div>
-
-                    <div class="faq-item">
-                        <button class="faq-question" aria-expanded="false">
-                            What does a UAV mapping engagement look like?
-                        </button>
-                        <div class="faq-answer">
-                            <p>We start with a scoping conversation to define species targets, coverage area, flight timing, and deliverable formats. We then conduct hyperspectral UAV surveys and optionally integrate satellite data for broader context. Outputs are GIS-compatible files, maps, and reports delivered on a timeline aligned with your program or management needs.</p>
-                        </div>
-                    </div>
-
-                    <div class="faq-item">
-                        <button class="faq-question" aria-expanded="false">
-                            Can Zubr help with forage quality?
-                        </button>
-                        <div class="faq-answer">
-                            <p>Yes, it is our core service. Our Forage Intelligence Report maps forage quality (crude protein, fiber/NDF, and silica), biomass, and grazing capacity across a ranch, allotment, or treatment area, using hyperspectral remote sensing calibrated to lab chemistry. Outputs are delivered as decision-ready maps and reports, not raw scans.</p>
-                        </div>
-                    </div>
-
-                    <div class="faq-item">
-                        <button class="faq-question" aria-expanded="false">
-                            What plant targets can you detect or map?
-                        </button>
-                        <div class="faq-answer">
-                            <p>Our founding use case is ventenata, and our approach extends to co-occurring dominant and native rangeland grasses. Because our models are built on a community-stratified calibration dataset, we can add new target species with a dataset-collection phase specific to your region, and the calibration library grows with every engagement.</p>
-                        </div>
-                    </div>
-
-                    <div class="faq-item">
-                        <button class="faq-question" aria-expanded="false">
-                            Do you sell a handheld scanner or field device?
-                        </button>
-                        <div class="faq-answer">
-                            <p>No. Zubr is a service, not a device company. Customer discovery through NSF I-Corps showed strong demand for forage-quality and invasive-plant mapping <em>services</em> rather than another field gadget, so we sell finished rangeland reports and decision tools. Our R&amp;D does include a research pathway toward a low-cost UAV sensor, but that is a future prototype, not a product you buy today.</p>
-                        </div>
-                    </div>
-
-                    <div class="faq-item">
-                        <button class="faq-question" aria-expanded="false">
-                            What does a typical engagement look like?
-                        </button>
-                        <div class="faq-answer">
-                            <p>We start with a scoping conversation to define deliverables, timeline, and success criteria. Most engagements run 4–16 weeks depending on data collection logistics and program deadlines. We provide a clear statement of work before any contract is signed. Many clients engage us on a recurring basis for monitoring or program reporting work.</p>
-                        </div>
-                    </div>
-
-                    <div class="faq-item">
-                        <button class="faq-question" aria-expanded="false">
-                            Who owns the data?
-                        </button>
-                        <div class="faq-answer">
-                            <p><strong>You own your data.</strong> All maps, reports, and scan results remain yours. We do not use client data for any purpose outside the agreed engagement without explicit consent.</p>
-                        </div>
-                    </div>
-
-                    <div class="faq-item">
-                        <button class="faq-question" aria-expanded="false">
-                            Where do you operate?
-                        </button>
-                        <div class="faq-answer">
-                            <p>We primarily serve the Western U.S. and Northern Great Plains. For satellite analysis and model development work, we can engage remotely. Contact us to discuss your geography.</p>
-                        </div>
-                    </div>
-
-                    <div class="faq-item">
-                        <button class="faq-question" aria-expanded="false">
-                            How does pricing work?
-                        </button>
-                        <div class="faq-answer">
-                            <p>All services are scoped and priced per engagement based on geography, species targets, data type, program requirements, and timeline. We do not publish standard rate cards. Every engagement starts with a scoping conversation. See the <a href="pricing.html">Pricing page</a> for an overview of service categories.</p>
-                        </div>
-                    </div>
-
-                    <div class="faq-item">
-                        <button class="faq-question" aria-expanded="false">
-                            What programs or agencies have you worked with?
-                        </button>
-                        <div class="faq-answer">
-                            <p>We are an early-stage company actively building our program partner network. If you are an NRCS office, weed district, land trust, conservation organization, or agency looking for a data services partner for rangeland mapping or invasive species work, we would like to talk.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- CTA Section -->
-        <section class="section section-light">
-            <div class="container text-center">
-                <h2>Still have questions?</h2>
-                <p>We are happy to help. Reach out and we will follow up quickly.</p>
-                <a href="contact.html" class="btn btn-accent" style="margin-top: 1rem;">Contact us</a>
-            </div>
-        </section>
+        <section class="section closing-cta"><div class="container"><div><span class="section-label">Still have a question?</span><h2>Tell us what you are trying to measure.</h2></div><div><p>Include the location, acreage, target layer, available field data, and the decision the result needs to support.</p><a href="contact.html" class="btn btn-primary">Contact Zubr</a></div></div></section>
     </main>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>Zubr Technologies</h4>
-                    <p>Environmental technology and data services for rangelands and conservation programs.</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Services</h4>
-                    <ul class="footer-links">
-                        <li><a href="services.html">Forage Intelligence Report</a></li>
-                        <li><a href="services.html">Treatment ROI Monitoring</a></li>
-                        <li><a href="services.html">Conservation Documentation</a></li>
-                        <li><a href="services.html">Advisor &amp; Cooperative Platform</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Company</h4>
-                    <ul class="footer-links">
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="technology.html">Technology</a></li>
-                        <li><a href="resources.html">Resources</a></li>
-                        <li><a href="contact.html">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Connect</h4>
-                    <div class="social-links">
-                        <a href="#" aria-label="LinkedIn">LinkedIn</a>
-                        <a href="#" aria-label="Twitter">Twitter</a>
-                    </div>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; <span class="current-year">2025</span> Zubr Technologies. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
-
+    <footer class="footer"><div class="container"><div class="footer-content"><div class="footer-section"><h4>Zubr Technologies</h4><p>Rangeland intelligence for pasture measurement, forage quality, and grazing decisions.</p></div><div class="footer-section"><h4>Product</h4><ul class="footer-links"><li><a href="index.html">ForageWatch dashboard</a></li><li><a href="about.html#product">Product overview</a></li><li><a href="about.html#method">Measurement method</a></li></ul></div><div class="footer-section"><h4>Company</h4><ul class="footer-links"><li><a href="about.html">About</a></li><li><a href="resources.html">Resources</a></li><li><a href="faq.html">FAQ</a></li><li><a href="contact.html">Contact</a></li></ul></div></div><div class="footer-bottom"><p>&copy; <span class="current-year">2026</span> Zubr Technologies. All rights reserved.</p></div></div></footer>
     <script src="assets/js/main.js"></script>
-    <!-- Maintenance update: routine refresh -->
 </body>
 </html>
